@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🔥 Encender Docker y Levantar Proyecto",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "if (-not (Get-Process 'Docker Desktop' -ErrorAction SilentlyContinue)) { Write-Host 'Iniciando Docker... espera unos segundos ⏳'; Start-Process 'C:\\Program Files\\Docker\\Docker\\Docker Desktop.exe'; Start-Sleep -Seconds 15 } else { Write-Host 'Docker ya está corriendo ✅' }; docker-compose up --build"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
