@@ -8,10 +8,15 @@ from app.database import engine, Base, get_db
 from app.models import user as user_model
 from app.schemas import user as user_schema
 from app.services import user_service
+from app.models import user, exam, question
 
 from fastapi.security import OAuth2PasswordRequestForm
 from app.core.security import verify_password, create_access_token
 from app.api.deps import get_current_user
+from app.schemas import exam as exam_schema
+from app.schemas import question as question_schema
+from app.services import exam_service
+from typing import List
 
 # -----------------------------------------------------------------------------
 # INIT: CREACIÓN DE TABLAS
@@ -81,3 +86,22 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "ok", "database": "connected"}
+
+# ---------------------------------------------------------
+# RUTAS DE EXÁMENES Y PREGUNTAS (FASE 3)
+# ---------------------------------------------------------
+
+@app.post("/exams/", response_model=exam_schema.Exam)
+def create_exam(exam: exam_schema.ExamCreate, db: Session = Depends(get_db)):
+    """Crea un nuevo examen vacío."""
+    return exam_service.create_exam(db=db, exam=exam)
+
+@app.get("/exams/", response_model=List[exam_schema.Exam])
+def read_exams(db: Session = Depends(get_db)):
+    """Obtiene todos los exámenes con sus respectivas preguntas anidadas."""
+    return exam_service.get_exams(db)
+
+@app.post("/questions/", response_model=question_schema.Question)
+def create_question(question: question_schema.QuestionCreate, db: Session = Depends(get_db)):
+    """Agrega una pregunta a un examen existente mediante el exam_id."""
+    return exam_service.create_question(db=db, question=question)
