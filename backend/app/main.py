@@ -1,6 +1,10 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from app.schemas import diagnostic as diagnostic_schema
+from app.services import diagnostic_service
+from fastapi import HTTPException
+
 # Importamos la infraestructura
 from app.database import engine, Base, get_db
 
@@ -105,3 +109,18 @@ def read_exams(db: Session = Depends(get_db)):
 def create_question(question: question_schema.QuestionCreate, db: Session = Depends(get_db)):
     """Agrega una pregunta a un examen existente mediante el exam_id."""
     return exam_service.create_question(db=db, question=question)
+
+# ---------------------------------------------------------
+# RUTAS DEL MOTOR DIAGNÓSTICO (FASE 4)
+# ---------------------------------------------------------
+
+@app.post("/diagnostico/", response_model=diagnostic_schema.DiagnosticResponse)
+def get_diagnostic_prediction(data: diagnostic_schema.DiagnosticRequest):
+    """
+    Recibe el desempeño de un alumno en el examen de diagnóstico
+    y devuelve la predicción del modelo Random Forest.
+    """
+    try:
+        return diagnostic_service.predict_ceneval(data)
+    except ValueError as e:
+        raise HTTPException(status_code=500, detail=str(e))
