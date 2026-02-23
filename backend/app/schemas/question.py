@@ -6,8 +6,10 @@ class QuestionBase(BaseModel):
     option_b: str
     option_c: str
     option_d: str
-    correct_answer: str # Debe ser 'a', 'b', 'c' o 'd'
-    exam_id: int # Llave foránea para saber a qué examen pertenece
+    correct_answer: str
+    category: str
+    difficulty: float # <-- En Pydantic es float nativo
+    exam_id: int
 
 class QuestionCreate(QuestionBase):
     pass
