@@ -1,8 +1,8 @@
-# Tutor CENEVAL - Backend & AI Engine 🧠🎓
+# Tutor CENEVAL - Backend & AI Engine 
 
 Este proyecto es el motor de backend y Machine Learning para un Tutor Inteligente diseñado para diagnosticar y predecir la probabilidad de éxito de estudiantes universitarios en exámenes estandarizados.
 
-## 🏗️ Arquitectura del Sistema
+##  Arquitectura del Sistema
 
 El proyecto sigue una arquitectura monolítica modularizada, separando claramente las responsabilidades en capas:
 
@@ -13,7 +13,7 @@ El proyecto sigue una arquitectura monolítica modularizada, separando clarament
 * **Infraestructura:** Docker & Docker Compose
 * **Seguridad:** JWT (JSON Web Tokens) y hashing de contraseñas con passlib (bcrypt).
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 El repositorio está dividido en dos grandes ecosistemas:
 
@@ -31,7 +31,7 @@ El repositorio está dividido en dos grandes ecosistemas:
     ├── models/            # Almacenamiento de modelos entrenados
     └── src/               # Scripts de entrenamiento y evaluación de algoritmos
 
-## 🚀 Instalación y Despliegue (Entorno Local)
+##  Instalación y Despliegue (Entorno Local)
 
 ### Prerrequisitos
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y en ejecución.
@@ -55,7 +55,7 @@ El repositorio está dividido en dos grandes ecosistemas:
     ```
     *La API estará disponible en `http://localhost:8000` y la documentación interactiva en `http://localhost:8000/docs`.*
 
-## 📚 Poblado de Base de Datos (Seed)
+##  Poblado de Base de Datos (Seed)
 
 Para que el sistema funcione correctamente y el motor de IA tenga contexto, necesitas inyectar el "Banco Estable de Preguntas".
 
