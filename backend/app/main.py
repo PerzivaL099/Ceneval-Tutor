@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from app.schemas import diagnostic as diagnostic_schema
@@ -28,6 +29,17 @@ from typing import List
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Ceneval Tutor API", version="1.0.0")
+
+# -----------------------------------------------------------------------------
+# CORS: Permite que el frontend React se comunique con la API
+# -----------------------------------------------------------------------------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # -----------------------------------------------------------------------------
 # RUTAS (ENDPOINTS)
