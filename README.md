@@ -1,64 +1,133 @@
-# Tutor CENEVAL - Backend & AI Engine 🧠🎓
+# Tutor CENEVAL — Plataforma de Diagnóstico con IA
 
-Este proyecto es el motor de backend y Machine Learning para un Tutor Inteligente diseñado para diagnosticar y predecir la probabilidad de éxito de estudiantes universitarios en exámenes estandarizados.
+Este proyecto es una plataforma web completa (Backend + Frontend) que funciona como un Tutor Inteligente diseñado para diagnosticar y predecir la probabilidad de éxito de estudiantes universitarios en el examen CENEVAL, utilizando un modelo de Machine Learning entrenado con Random Forest.
 
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del Sistema
 
-El proyecto sigue una arquitectura monolítica modularizada, separando claramente las responsabilidades en capas:
+El proyecto sigue una arquitectura cliente-servidor, separando el frontend y el backend en servicios independientes que se comunican mediante una API REST con peticiones en formato JSON.
 
-* **Framework Web:** FastAPI (Python 3.10)
-* **Base de Datos:** PostgreSQL
-* **ORM:** SQLAlchemy (con modelos y esquemas validados vía Pydantic)
-* **Motor de Inteligencia Artificial:** Scikit-Learn y XGBoost (Random Forest v2)
-* **Infraestructura:** Docker & Docker Compose
-* **Seguridad:** JWT (JSON Web Tokens) y hashing de contraseñas con passlib (bcrypt).
+* **Frontend:** React 19 + Vite 7 (puerto 5173)
+* **Backend / API:** FastAPI — Python 3.10 (puerto 8000)
+* **Base de Datos:** PostgreSQL (puerto 5432)
+* **ORM:** SQLAlchemy (con validación de esquemas vía Pydantic)
+* **Motor de IA:** Scikit-Learn y XGBoost (Random Forest v2)
+* **Infraestructura:** Docker y Docker Compose
+* **Seguridad:** JWT (JSON Web Tokens) y hashing de contraseñas con passlib (bcrypt)
+* **Comunicación:** CORS habilitado para permitir la interacción entre frontend y backend en puertos distintos
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
-El repositorio está dividido en dos grandes ecosistemas:
-
-├── backend/               # La API HTTP y lógica de negocio
-│   ├── app/               # Código fuente principal de FastAPI
-│   │   ├── ml/            # Modelos de Machine Learning exportados (.pkl)
-│   │   ├── models/        # Modelos de base de datos relacional (SQLAlchemy)
-│   │   ├── schemas/       # Contratos de datos y validación (Pydantic)
-│   │   ├── services/      # Lógica central (Controladores y procesamiento)
-│   │   └── main.py        # Punto de entrada de la aplicación
-│   └── scripts/           # Scripts de automatización (ej. inyección de datos)
+```
+Ceneval-Tutor/
 │
-└── data_science/          # Laboratorio de IA y análisis de datos
-    ├── data/              # Conjuntos de datos simulados y estructurados
-    ├── models/            # Almacenamiento de modelos entrenados
-    └── src/               # Scripts de entrenamiento y evaluación de algoritmos
+├── backend/                   # API HTTP y lógica de negocio
+│   ├── app/
+│   │   ├── core/              # Configuración y seguridad (JWT, hashing)
+│   │   ├── ml/                # Modelos de ML exportados (.pkl)
+│   │   ├── models/            # Modelos de BD relacional (SQLAlchemy)
+│   │   ├── schemas/           # Contratos de datos y validación (Pydantic)
+│   │   ├── services/          # Lógica central (usuarios, exámenes, diagnóstico)
+│   │   ├── api/               # Dependencias de inyección (auth, DB sessions)
+│   │   ├── database.py        # Configuración de conexión a PostgreSQL
+│   │   └── main.py            # Punto de entrada de la API (FastAPI)
+│   ├── scripts/               # Scripts de automatización
+│   │   └── data/              # Banco de preguntas CENEVAL (JSON)
+│   ├── Dockerfile             # Imagen Docker del backend
+│   └── requirements.txt       # Dependencias de Python
+│
+├── frontend/                  # Interfaz de usuario (React)
+│   ├── src/
+│   │   ├── components/layout/ # Componentes de layout (Sidebar, TopBar, AppShell)
+│   │   ├── context/           # Estado global de autenticación (AuthContext)
+│   │   ├── pages/
+│   │   │   ├── LoginPage/     # Página de login y registro
+│   │   │   ├── DashboardPage/ # Panel principal con métricas e insights
+│   │   │   ├── ExamPage/      # Examen diagnóstico con tracking automático
+│   │   │   └── ResultsPage/   # Resultados con predicción de IA
+│   │   ├── services/          # Capa de comunicación con la API (api.js)
+│   │   ├── App.jsx            # Rutas y navegación
+│   │   ├── main.jsx           # Punto de entrada de React
+│   │   └── index.css          # Sistema de diseño global (tema oscuro)
+│   ├── index.html             # HTML base
+│   └── package.json           # Dependencias de Node.js
+│
+├── data_science/              # Laboratorio de IA y análisis de datos
+│   ├── data/                  # Conjuntos de datos simulados
+│   ├── models/                # Modelos entrenados almacenados
+│   └── src/                   # Scripts de entrenamiento y evaluación
+│
+├── docker-compose.yml         # Orquestación de servicios (DB + API)
+├── .env                       # Variables de entorno (DB, JWT)
+└── README.md
+```
 
-## 🚀 Instalación y Despliegue (Entorno Local)
+## Prerrequisitos
 
-### Prerrequisitos
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y en ejecución.
+* [Node.js](https://nodejs.org/) (v18 o superior) con npm.
 * Git.
 
-### Pasos para levantar el entorno
+## Instalación y Despliegue (Entorno Local)
 
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone <URL_DEL_REPOSITORIO>
-    cd Ceneval-Tutor
-    ```
+### 1. Clonar el repositorio
 
-2.  **Configurar variables de entorno:**
-    Crea un archivo `.env` en la raíz del directorio `backend/` basado en el `.env.example` (si aplica) con tus credenciales de PostgreSQL y JWT.
+```bash
+git clone https://github.com/PerzivaL099/Ceneval-Tutor.git
+cd Ceneval-Tutor
+```
 
-3.  **Construir y levantar la infraestructura:**
-    Ejecuta el siguiente comando para levantar la base de datos y la API:
-    ```bash
-    docker-compose up --build
-    ```
-    *La API estará disponible en `http://localhost:8000` y la documentación interactiva en `http://localhost:8000/docs`.*
+### 2. Configurar variables de entorno
 
-## 📚 Poblado de Base de Datos (Seed)
+Verifica que exista un archivo `.env` en la raíz del proyecto con las siguientes variables:
 
-Para que el sistema funcione correctamente y el motor de IA tenga contexto, necesitas inyectar el "Banco Estable de Preguntas".
+```env
+POSTGRES_USER=ceneval_user
+POSTGRES_PASSWORD=ceneval_pass
+POSTGRES_DB=ceneval_db
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
 
-Con el contenedor ejecutándose, abre otra terminal y corre:
+JWT_SECRET_KEY=tu_clave_secreta
+JWT_ALGORITHM=HS256
+JWT_EXPIRE_MINUTES=60
+```
+
+### 3. Levantar el Backend (Docker)
+
+Construye y levanta la base de datos PostgreSQL y la API de FastAPI:
+
+```bash
+docker compose up --build
+```
+
+> Si usas una versión anterior de Docker, utiliza `docker-compose up --build`.
+
+La API estará disponible en:
+* **API:** `http://localhost:8000`
+* **Documentación interactiva (Swagger):** `http://localhost:8000/docs`
+
+### 4. Poblar la Base de Datos (Seed)
+
+Con los contenedores ejecutándose, abre otra terminal y ejecuta:
+
 ```bash
 docker exec -it ceneval_api python scripts/seed_db.py
+```
+
+Esto inyecta el banco de 30 preguntas CENEVAL en la base de datos y crea el examen diagnóstico base.
+
+### 5. Instalar dependencias del Frontend
+
+```bash
+cd frontend
+npm install
+```
+
+### 6. Iniciar el Frontend
+
+```bash
+npm run dev
+```
+
+El frontend estará disponible en:
+* **Aplicación:** `http://localhost:5173`
