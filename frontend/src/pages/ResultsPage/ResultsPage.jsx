@@ -239,7 +239,7 @@ export default function ResultsPage() {
                 {/* AI Insight */}
                 <div className="card results-insight-card animate-fade-in delay-3">
                     <h3 className="card-title">
-                        <span className="card-title-icon">🧠</span>
+                        <span className="card-title-icon">*</span>
                         Insights de la IA
                     </h3>
                     <div className="insight-content">

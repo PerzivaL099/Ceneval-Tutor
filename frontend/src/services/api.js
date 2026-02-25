@@ -5,16 +5,16 @@
 const API_BASE = 'http://localhost:8000';
 
 // Set to true to bypass the backend entirely
-const MOCK_MODE = false;
+const MOCK_MODE = true;
 
 // ---- Mock Data ----
 const MOCK_USER = {
   id: 1,
-  email: 'alumno@ceneval.mx',
+  email: 'admin@admin.com',
   is_active: true,
 };
 
-const MOCK_PASSWORD = '1234';
+const MOCK_PASSWORD = 'admin';
 
 const MOCK_QUESTIONS = [
   { id: 1, text: "Durante la fase de análisis léxico, ¿qué estructura de datos se utiliza para reconocer tokens?", option_a: "ABB", option_b: "AFD", option_c: "Hash", option_d: "DAG", correct_answer: "b", category: "Teoría de Compiladores", difficulty: 0.8, exam_id: 1 },
