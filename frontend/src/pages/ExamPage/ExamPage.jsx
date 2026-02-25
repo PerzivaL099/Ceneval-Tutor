@@ -251,7 +251,7 @@ export default function ExamPage() {
         return (
             <div className="exam-setup animate-fade-in">
                 <div className="card exam-setup-card">
-                    <div className="exam-setup-icon">⚡</div>
+                    <div className="exam-setup-icon">Diagnostico</div>
                     <h1>Simulacro de Diagnóstico</h1>
                     <p className="exam-setup-desc">
                         Este examen evaluará tus conocimientos en 5 áreas clave del CENEVAL.
@@ -261,21 +261,21 @@ export default function ExamPage() {
 
                     <div className="exam-setup-info">
                         <div className="setup-stat">
-                            <span className="setup-stat-icon">📝</span>
+                            <span className="setup-stat-icon"></span>
                             <div>
                                 <strong>30 preguntas</strong>
                                 <small>Opción múltiple (A, B, C, D)</small>
                             </div>
                         </div>
                         <div className="setup-stat">
-                            <span className="setup-stat-icon">⏱️</span>
+                            <span className="setup-stat-icon"></span>
                             <div>
                                 <strong>Sin límite de tiempo</strong>
                                 <small>Pero se mide tu velocidad</small>
                             </div>
                         </div>
                         <div className="setup-stat">
-                            <span className="setup-stat-icon">🧠</span>
+                            <span className="setup-stat-icon"></span>
                             <div>
                                 <strong>IA en tiempo real</strong>
                                 <small>Tracking automático de comportamiento</small>
@@ -291,7 +291,7 @@ export default function ExamPage() {
                             value={semestre}
                             onChange={(e) => setSemestre(Number(e.target.value))}
                         >
-                            {Array.from({ length: 12 }, (_, i) => i + 1).map((s) => (
+                            {Array.from({ length: 8 }, (_, i) => i + 1).map((s) => (
                                 <option key={s} value={s}>Semestre {s}</option>
                             ))}
                         </select>
@@ -299,7 +299,7 @@ export default function ExamPage() {
 
                     {error && (
                         <div className="login-error animate-fade-in">
-                            <span>⚠️</span> {error}
+                            <span>!</span> {error}
                         </div>
                     )}
 
@@ -331,7 +331,7 @@ export default function ExamPage() {
                     <div className="submitting-steps">
                         <div className="submitting-step active">✓ Respuestas recopiladas</div>
                         <div className="submitting-step active">✓ Calificaciones por área calculadas</div>
-                        <div className="submitting-step pulse-anim">⏳ Ejecutando Random Forest...</div>
+                        <div className="submitting-step pulse-anim">... Ejecutando Random Forest...</div>
                     </div>
                 </div>
             </div>
@@ -365,11 +365,11 @@ export default function ExamPage() {
                 </div>
                 <div className="exam-status-right">
                     <div className="exam-timer" id="exam-timer">
-                        <span className="timer-icon">⏱️</span>
+                        <span className="timer-icon">T:</span>
                         <span className="timer-value">{formatTime(totalExamTime)}</span>
                     </div>
                     <div className="exam-answered">
-                        ✅ {answeredCount}/{questions.length}
+                        {answeredCount}/{questions.length}
                     </div>
                 </div>
             </div>
@@ -464,7 +464,7 @@ export default function ExamPage() {
 
                     {/* Live tracking stats */}
                     <div className="card exam-tracking-card">
-                        <h4 className="exam-map-title">📊 Tracking en Vivo</h4>
+                        <h4 className="exam-map-title">Tracking en Vivo</h4>
                         <div className="tracking-stats">
                             <div className="tracking-stat">
                                 <span className="tracking-label">Tiempo en esta pregunta</span>
