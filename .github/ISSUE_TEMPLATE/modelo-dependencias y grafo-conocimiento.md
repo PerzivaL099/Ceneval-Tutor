@@ -1,6 +1,9 @@
 ---
-title: "[FEAT] Modelado de Dependencias: Grafo de Conocimiento (DAG)"
+name: "🕸️ Feature: Grafo de Conocimiento (DAG)"
+about: "Modelado de prerrequisitos y dependencias de estudio en el servidor."
+title: "[FEAT] Modelado de Dependencias: Grafo de Conocimiento"
 labels: ["backend", "algorithms", "logic"]
+assignees: ''
 ---
 ## 🎯 Objetivo Arquitectónico
 Dejar de tratar los temas de estudio como listas planas y modelarlos como una red relacional. Construiremos un Grafo Acíclico Dirigido (DAG) en el servidor para establecer los prerrequisitos lógicos de aprendizaje.

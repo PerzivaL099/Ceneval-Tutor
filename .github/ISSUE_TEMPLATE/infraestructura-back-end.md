@@ -1,6 +1,9 @@
 ---
-title: "[FEAT] Infraestructura Backend para Búsqueda Semántica (pgvector)"
+name: "🗄️ Feature: Infraestructura Backend (pgvector)"
+about: "Integración de PostgreSQL vectorial y FastAPI."
+title: "[FEAT] Infraestructura Backend para Búsqueda Semántica"
 labels: ["backend", "database", "architecture"]
+assignees: ''
 ---
 ## 🎯 Objetivo Arquitectónico
 Trasladar la lógica del modelo NLP al servidor de FastAPI e integrar el motor de base de datos relacional con capacidades vectoriales para evitar cuellos de botella en la memoria RAM.
