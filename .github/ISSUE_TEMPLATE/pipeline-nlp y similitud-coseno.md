@@ -1,6 +1,9 @@
 ---
+name: "🧠 Feature: Pipeline NLP (Data Science)"
+about: "Laboratorio para embeddings y cálculo de similitud del coseno."
 title: "[FEAT] Pipeline de NLP: Embeddings y Similitud del Coseno"
 labels: ["deep-learning", "data-science", "nlp"]
+assignees: ''
 ---
 ## 🎯 Objetivo Arquitectónico
 Implementar la base matemática de **Deep Representation Learning** para el motor semántico. No tocaremos el servidor aún; el objetivo es probar el modelo en el laboratorio (Jupyter) usando Aprendizaje por Transferencia.

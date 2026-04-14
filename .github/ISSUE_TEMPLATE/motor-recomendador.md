@@ -1,6 +1,9 @@
 ---
-title: "[FEAT] Motor Recomendador: Autoencoders y Perfilado de Usuario"
+name: "🤖 Feature: Motor Recomendador (Autoencoders)"
+about: "Implementación de IA para perfilar usuarios y sugerir temas."
+title: "[FEAT] Motor Recomendador: Autoencoders y Perfilado"
 labels: ["deep-learning", "data-science", "recommender"]
+assignees: ''
 ---
 ## 🎯 Objetivo Arquitectónico
 Complementar el DAG estricto con recomendaciones personalizadas impulsadas por IA. El sistema debe comprimir el perfil del alumno en un espacio latente para encontrar rutas de estudio óptimas basadas en patrones ocultos.
