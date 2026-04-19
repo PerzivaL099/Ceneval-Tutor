@@ -1,0 +1,17 @@
+# --- Manipulación y Análisis de Datos (EDA) ---
+pandas
+numpy
+matplotlib
+scikit-learn
+seaborn
+ollama
+# --- Deep Learning y NLP ---
+torch
+sentence-transformers
+
+# --- APIs y Variables de Entorno ---
+google-generativeai
+python-dotenv
+
+# --- Herramientas de Desarrollo ---
+jupyter
