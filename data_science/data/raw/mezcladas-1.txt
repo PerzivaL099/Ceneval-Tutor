@@ -1,0 +1,96 @@
+¿Qué evalúa la Notación Big-O (O grande)?,El límite superior lógico del tiempo de ejecución o el espacio en memoria que requiere un algoritmo a medida que el tamaño de la entrada (N) crece hacia el infinito.
+¿Cuál es la diferencia entre un Árbol Binario de Búsqueda (BST) y un Árbol AVL?,Un BST puede desbalancearse y degradar su búsqueda a O(N). 
+Un AVL es un árbol auto-balanceado que garantiza lógicamente una altura logarítmica, manteniendo la búsqueda en O(log N).
+¿Qué es una Tabla Hash (Hash Table)?,Estructura de datos que asocia llaves con valores utilizando una función hash lógica para calcular el índice del array, logrando búsquedas, inserciones y borrados en tiempo promedio de O(1).
+¿Qué establece la Ley de De Morgan?,Que la negación de una conjunción es la disyunción de las negaciones: NOT (A AND B) = (NOT A) OR (NOT B).
+¿Qué es un Grafo Dirigido Acíclico (DAG)?,Una estructura de datos de nodos y aristas donde las conexiones tienen una dirección específica y es lógicamente imposible empezar en un nodo y volver a él siguiendo las flechas.
+Una estructura de datos de nodos y aristas donde las conexiones tienen una dirección específica y es lógicamente imposible empezar en un nodo y volver a él siguiendo las flechas.,Arquitectura algorítmica que divide un problema en subproblemas más pequeños del mismo tipo, los resuelve recursivamente y combina sus resultados (ej. Merge Sort).
+¿Qué es la Programación Dinámica?,Técnica de optimización que resuelve problemas complejos dividiéndolos en subproblemas superpuestos, almacenando lógicamente sus resultados (Memoization o Tabulation) para evitar recalcularlos.
+Una Búsqueda Binaria puede aplicarse a cualquier tipo de Array,Falso
+ Condición lógica estricta: el array debe estar previamente ordenado para que el algoritmo pueda descartar la mitad de los elementos en cada paso.
+El algoritmo QuickSort siempre es más rápido que MergeSort,Falso
+Aunque su tiempo promedio es O(N log N), en su peor caso (cuando el pivote se elige mal) degrada lógicamente a O(N^2), mientras que MergeSort siempre garantiza O(N log N).
+Un problema NP-Completo tiene una solución conocida que se ejecuta en tiempo polinómico,Falso
+Son problemas donde es fácil verificar lógicamente una solución, pero no existe un algoritmo conocido para encontrar la solución rápidamente a gran escala (ej. Problema del Agente Viajero).
+Tienes un laberinto y necesitas encontrar la ruta de salida más corta, garantizada. ¿Qué algoritmo de grafos utilizas?,Búsqueda en Anchura (BFS). Al explorar lógicamente nivel por nivel, garantiza encontrar el camino más corto en grafos no ponderados.
+Necesitas modelar las dependencias de paquetes de software, donde el paquete A debe instalarse antes que el B. ¿Qué algoritmo utilizas?,Un Ordenamiento Topológico sobre un Grafo Dirigido Acíclico (DAG).
+Un sistema procesa una cola de prioridad donde el elemento con mayor urgencia siempre debe salir primero. ¿Qué estructura de datos optimiza esto?,Un Montículo Binario (Binary Heap), permitiendo extracciones del máximo en O(log N).
+¿Cuál es el resultado de realizar un XOR entre dos números idénticos?,Cero
+ (A XOR A = 0), principio lógico usado frecuentemente en criptografía y algoritmos de bajo nivel.
+Diseñas un motor de autocompletado de texto que sugiere palabras rápidamente basadas en el prefijo tecleado. ¿Qué estructura de datos es la más eficiente?,Un Árbol Trie (Prefix Tree), diseñado arquitectónicamente para búsquedas rápidas de cadenas lógicas.
+¿Qué es una "Colisión" en una Tabla Hash?,Ocurre cuando la función hash asigna lógicamente dos llaves diferentes al mismo índice de memoria. Se resuelve mediante encadenamiento (Linked Lists) o sondeo abierto.
+En álgebra booleana, A OR (A AND B) se simplifica lógicamente a A,Verdadero
+ Es la regla de Absorción.
+¿Qué es un algoritmo "Avaro" (Greedy)?,Un enfoque lógico que toma la mejor elección óptima local en cada paso, esperando que estas elecciones conduzcan a un óptimo global (aunque no siempre lo garantiza).
+Debes encontrar el camino más rápido entre dos ciudades en un mapa con distancias (pesos) positivos distintos. ¿Qué algoritmo implementas?,El algoritmo de Dijkstra, optimizado para grafos ponderados sin pesos negativos.
+Las Pilas (Stacks) operan bajo el principio FIFO,Falso
+Operan bajo el principio LIFO (Last In, First Out). Las Colas (Queues) son las que operan bajo FIFO (First In, First Out).
+¿Cuál es la característica principal del Paradigma Funcional?,Trata la computación como la evaluación de funciones matemáticas puras, evitando arquitectónicamente cambiar el estado y los datos mutables (sin efectos secundarios).
+¿Qué es un Lenguaje de Tipado Estricto (Fuerte)?,Un diseño donde el lenguaje no permite conversiones implícitas de tipos que puedan causar pérdida de lógica o errores (ej. no puedes sumar int 5 con string "5" sin conversión explícita).
+¿Qué diferencia hay entre Tipado Estático y Tipado Dinámico?,En el estático, los tipos de datos se verifican durante la compilación. En el dinámico, se verifican durante el tiempo de ejecución de la aplicación.
+¿Qué es el "Garbage Collector" (Recolector de Basura)?,Un componente arquitectónico de ciertos lenguajes (Java, C#) que rastrea automáticamente la memoria dinámica (Heap) y libera lógicamente la memoria de objetos que ya no están referenciados por el programa.
+¿Qué es un Puntero (Pointer)?,Una variable lógica cuyo valor es la dirección de memoria física de otra variable o función.
+¿Qué es una "Closure" (Clausura)?,Una función que "recuerda" y puede acceder lógicamente a las variables de su entorno léxico (su ámbito padre) incluso después de que la función padre haya terminado de ejecutarse.
+¿Qué es el Polimorfismo?,El principio arquitectónico donde diferentes clases responden al mismo llamado de método de manera distinta, permitiendo a una interfaz representar a múltiples tipos subyacentes.
+¿Qué es el Encapsulamiento?,La restricción lógica del acceso directo a los componentes internos de un objeto, exponiendo solo interfaces controladas (getters/setters) para proteger la integridad de los datos.
+¿Qué es una Expresión Lambda?,Una función anónima (sin nombre) de corto alcance utilizada lógicamente para pasar comportamientos o lógica como parámetros a otras funciones (ej. para filtrar una lista).
+Los lenguajes compilados siempre serán más lentos que los interpretados al ejecutarse,Falso
+ Los lenguajes compilados (C, Rust) son generalmente mucho más rápidos en ejecución porque ya fueron traducidos a código máquina lógico del procesador de antemano.
+En Java o C#, si pasas un objeto como parámetro a una función, se crea una copia completa del objeto en memoria,Falso
+Se pasa una copia lógica de la referencia (puntero) del objeto. Si modificas sus propiedades dentro de la función, afectará al objeto original.
+¿Qué es la "Inmutabilidad" y por qué es útil en arquitecturas concurrentes?,Es el principio donde un objeto, una vez creado, no puede modificar su estado. Es útil porque múltiples hilos pueden leerlo simultáneamente sin necesidad de bloqueos lógicos (Mutex), eliminando condiciones de carrera.
+Desarrollas el controlador de frenos de un coche (un sistema de tiempo real crítico). ¿Por qué elegirías C o Rust en lugar de Java o Python?,Porque requieres manejo de memoria determinista y baja latencia garantizada. El Garbage Collector de Java podría pausar lógicamente la ejecución de manera impredecible.
+Un programa recursivo en C arroja un error "Stack Overflow". ¿Qué falló arquitectónicamente en el diseño de la función?,Faltó o falló la condición de corte (caso base). Cada llamada recursiva consumió un marco de pila (Stack Frame) en la memoria hasta desbordarla.
+¿Qué es el paradigma de Programación Declarativa?,Enfoque arquitectónico donde le dices a la computadora lógicamente qué resultado quieres obtener, en lugar de detallar el cómo paso a paso (ej. SQL o React).
+Tienes un proceso altamente concurrente matemático donde un hilo nunca debe afectar a otro. ¿Qué paradigma de programación minimiza este riesgo por diseño?,El Paradigma Funcional.
+¿Qué es la "Evaluación Perezosa" (Lazy Evaluation)?,Una estrategia de diseño donde el compilador o intérprete retrasa el cálculo de una expresión lógica hasta que su valor sea estrictamente necesario para la ejecución, ahorrando CPU.
+Una interfaz (Interface) en POO puede contener variables de instancia con valores mutables,Falso
+ Una interfaz define puramente un contrato arquitectónico de comportamientos (métodos), no estados (variables abstractas son usualmente constantes).
+¿Qué es la "Reflexión" (Reflection) en un lenguaje de programación?,La capacidad de un programa para examinar, introspectar y modificar su propia estructura arquitectónica y lógica en tiempo de ejecución (ej. ver qué métodos tiene una clase dinámicamente).
+Tu aplicación crea miles de objetos gráficos a lo largo del tiempo, pero la RAM sigue subiendo hasta colapsar, a pesar de usar un lenguaje con Garbage Collector. ¿Qué está pasando?,Un "Memory Leak" lógico. Tienes estructuras (como listas o listeners globales) que siguen referenciando a los objetos que ya no usas, impidiendo que el recolector los limpie.
+¿Qué es el "Escalamiento Horizontal" (Scale-Out)?,Estrategia arquitectónica que aumenta la capacidad del sistema añadiendo más servidores (nodos) a la red distribuida, en lugar de mejorar un solo servidor.
+¿Qué es el "Escalamiento Vertical" (Scale-Up)?,Estrategia que añade más poder (CPU, RAM) a un único servidor físico o virtual existente.
+¿Qué es un RPC (Remote Procedure Call)?,Un protocolo de comunicación que permite a un programa en un nodo ejecutar lógicamente una función o procedimiento en el espacio de direcciones de otro nodo de la red, como si fuera una llamada local.
+¿Qué es el paradigma MapReduce?,Modelo de programación distribuida. La fase Map divide datos masivos y extrae pares clave-valor. La fase Reduce agrega y procesa lógicamente esos datos para generar un resultado consolidado.
+Minería de Datos: ¿Qué es la "Clasificación"?,Técnica de aprendizaje supervisado donde se entrena a un modelo para asignar lógicamente nuevos datos a categorías predefinidas (ej. ¿Es este correo Spam o No Spam?).
+¿Qué es el "Clustering" (Agrupamiento)?,Técnica no supervisada que descubre agrupaciones lógicas ocultas en datos sin etiquetas previas, basándose en su similitud (ej. Algoritmo K-Means).
+¿Qué evalúa el Algoritmo Apriori?,Reglas de asociación. Descubre lógicamente qué elementos ocurren con frecuencia juntos en bases de datos transaccionales (ej. "Si compra Pan, hay un 80% de probabilidad de que compre Leche").
+¿qué es la "Tolerancia a Particiones" (Teorema CAP)?,La capacidad arquitectónica del sistema para seguir operando incluso si la red falla y los nodos pierden comunicación lógica entre ellos.
+¿Qué es el "Sharding" en arquitecturas distribuidas?,El particionamiento horizontal de la base de datos, dividiendo lógicamente filas masivas en fragmentos independientes alojados en múltiples servidores separados.
+En un sistema distribuido con "Consistencia Fuerte", leer de cualquier nodo garantiza obtener el dato más reciente escrito,Verdadero
+El sistema bloquea lógicamente las lecturas hasta que todos los nodos se actualicen.
+El algoritmo K-Means es un modelo supervisado que requiere datos de entrenamiento etiquetados,Falso
+ Es no supervisado; el algoritmo debe inferir lógicamente los clústeres por sí mismo basándose en distancias matemáticas.
+Un microservicio de pedidos necesita enviarle mensajes al microservicio de inventarios, pero si este último se cae, los mensajes no deben perderse. ¿Qué componente intermedio diseñas?,Un Broker de Mensajería (Cola de Mensajes / Message Queue) como RabbitMQ o Kafka, para desacoplar asíncronamente los servicios.
+Quieres analizar terabytes de logs de servidores distribuidos. ¿Qué tecnología arquitectónica usarías?,Un framework de cómputo distribuido de Big Data (como Hadoop para procesos batch o Apache Spark para procesamiento en memoria).
+¿Qué es un "Outlier" (Valor atípico)?,Un punto de dato lógico que difiere significativamente del resto del conjunto. Puede indicar errores en los datos o un evento valioso (como fraude en transacciones).
+¿Qué es un "Reloj Lógico" (ej. Lamport Timestamp)?,Un mecanismo algorítmico en sistemas distribuidos diseñado para capturar el orden cronológico absoluto o relativo de los eventos, ante la imposibilidad de sincronizar perfectamente los relojes físicos de las máquinas.
+Escalar horizontalmente una base de datos relacional monolítica es más sencillo que escalar una base de datos NoSQL,Falso
+Las bases relacionales (ACID) tienen una arquitectura estrechamente acoplada; las bases NoSQL están diseñadas intrínsecamente para distribuirse (Sharding) con facilidad.
+Un banco quiere segmentar a sus clientes basándose en su comportamiento de gasto, sin ideas previas de los grupos
+¿Qué técnica analítica aplicas?,Clustering (Agrupamiento no supervisado)
+¿Cuál es el problema del "Sobreajuste" (Overfitting)?,Ocurre cuando un modelo lógico memoriza el "ruido" de los datos de entrenamiento en lugar de la señal real, haciendo que falle estrepitosamente al analizar datos nuevos o reales.
+¿Qué es un sistema Peer-to-Peer (P2P)?,Arquitectura distribuida descentralizada donde todos los nodos (pares) tienen las mismas capacidades y responsabilidades lógicas, actuando tanto como clientes como servidores.
+En un cluster de 5 servidores de base de datos, el Nodo Maestro (Master) sufre un fallo de hardware. ¿Qué proceso lógico debe ejecutar el sistema inmediatamente?,Una Elección de Líder (Leader Election), un algoritmo de consenso donde los nodos restantes deciden quién se convertirá en el nuevo Master para aceptar escrituras.
+¿Cuál es la diferencia arquitectónica entre Cifrado Simétrico y Asimétrico?,El simétrico utiliza una única llave compartida para cifrar y descifrar (rápido). El asimétrico utiliza un par de llaves matemáticamente enlazadas: una pública para cifrar y una privada para descifrar (más lento pero más seguro en red).
+¿Qué es una Función Hash Criptográfica (ej. SHA-256)?,Un algoritmo lógico unidireccional que toma un dato de cualquier tamaño y produce una cadena de longitud fija. Es imposible revertir el hash al texto original.
+¿Qué es la inyección SQL (SQLi)?,Una vulnerabilidad arquitectónica donde un atacante manipula el input del usuario para inyectar sentencias SQL lógicas maliciosas que la base de datos ejecuta sin validar.
+¿Cuál es la defensa estándar a nivel de código contra la Inyección SQL?,Utilizar Consultas Parametrizadas (Prepared Statements), que obligan lógicamente a la base de datos a tratar el input estrictamente como datos literales, no como comandos ejecutables.
+¿Qué es XSS (Cross-Site Scripting)?,Vulnerabilidad donde un atacante inyecta scripts lógicos maliciosos (generalmente JavaScript) en una aplicación web, los cuales son ejecutados en los navegadores de los usuarios víctimas.
+¿Cuál es la defensa arquitectónica principal contra XSS?,Sanitización rigurosa de entradas y, fundamentalmente, la codificación/escape del output lógico (Output Encoding) antes de renderizarlo en el navegador.
+¿Qué es CSRF (Cross-Site Request Forgery)?,Ataque lógico que engaña a un usuario autenticado para que ejecute acciones no deseadas en una aplicación web en la que confía, usando su sesión actual.
+¿Cómo se previene a nivel arquitectónico un ataque CSRF?,Implementando Tokens Anti-CSRF; cadenas aleatorias generadas por el servidor que deben acompañar forzosamente a cada petición que cambie el estado de la aplicación.
+¿Qué es un Token JWT (JSON Web Token)?,Un estándar lógico y compacto para transmitir información de forma segura entre partes como un objeto JSON, firmado criptográficamente para verificar su integridad (común en APIs REST).
+¿Qué es OAuth 2.0?,Un marco arquitectónico de Autorización que permite a una aplicación obtener acceso limitado a cuentas de usuario en un servicio HTTP, delegando la autenticación al servicio que aloja la cuenta (ej. "Iniciar sesión con Google").
+Guardar las contraseñas de los usuarios usando un cifrado simétrico robusto como AES-256 es una buena práctica,Falso
+ Las contraseñas nunca se cifran (ya que el cifrado es reversible si roban la llave). Deben ser "hasheadas" (con algoritmos como Bcrypt o Argon2) y se les debe aplicar "Salt".
+¿Qué es el "Salting" (Añadir Sal) en criptografía de contraseñas?,Agregar lógicamente una cadena de datos aleatorios únicos a cada contraseña antes de procesarla por la función hash, mitigando ataques de tablas arcoíris (Rainbow Tables).
+¿Qué diferencia hay entre IDS (Sistema de Detección de Intrusos) e IPS (Sistema de Prevención de Intrusos)?,El IDS analiza el tráfico pasivamente y genera alertas lógicas ante anomalías. El IPS se ubica en línea con el tráfico y bloquea activamente los paquetes maliciosos detectados.
+¿Qué es la "Superficie de Ataque" en arquitectura de software?,La suma de todos los puntos finales lógicos (APIs, puertos abiertos, inputs de usuario) donde un atacante no autorizado podría intentar ingresar datos o extraer información de un sistema.
+¿Qué es un ataque DDoS (Distributed Denial of Service)?,El uso de una botnet distribuida para inundar masivamente un servidor con solicitudes de red (o lógicas), agotando sus recursos e impidiendo el acceso a los usuarios legítimos.
+Un atacante intercepta la comunicación Wi-Fi de un usuario web para leer su token de sesión. ¿Cómo previenes este ataque Man-in-the-Middle en el diseño de infraestructura?,Forzando todo el tráfico a través del protocolo HTTPS (TLS/SSL), que cifra el canal de transporte a nivel de red.
+Una API permite adivinar contraseñas haciendo 10,000 intentos por segundo. ¿Qué patrón arquitectónico defensivo debes implementar?,Rate Limiting (Limitación de Tasa) para restringir el número de peticiones desde una misma IP o cuenta temporalmente.
+Una llave asimétrica privada puede derivarse fácilmente si el atacante obtiene tu llave pública,Falso
+ La base lógica de la criptografía asimétrica es que, aunque las llaves están conectadas por una relación matemática (ej. factorización de números primos grandes), es computacionalmente inviable derivar la privada desde la pública.
+¿Qué dicta el Principio de Privilegio Mínimo (PoLP)?,Arquitectura de seguridad lógica donde cada módulo, proceso o usuario del sistema debe tener acceso única y exclusivamente a la información y recursos necesarios para su propósito legítimo.
+¿Qué es la "Ingeniería Social" en ciberseguridad?,La manipulación psicológica y no técnica de las personas para que realicen acciones ilícitas o divulguen información confidencial (ej. Phishing). El "parche" para esto es la capacitación, no el código.

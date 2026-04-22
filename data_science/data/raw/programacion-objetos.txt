@@ -1,0 +1,91 @@
+Que es un objeto?,Instancia de una clase que combina estado/atributos y comportamientos/metodos
+Que es una clase?,Plantilla o molde que define los atributos y metodos comunes a todos los objetos de ese tipo.
+Abstraccion,Proceso de capturar solo los detalles relevantes de un objeto para un contexto determinado, ignorando lo relevante
+Encapsulamiento,Ocultar el estado interno de un objeto y requerir que toda la interaccion se realice a traves de metodos publicos
+Herencia,Permite que una clase derive de otra, adquiriendo sus atributos y metodos
+Polimorfismo,Capacidad de un objeto de tomar diferentes formas o comportarse de manera distinta segun el contexto
+El encapsulamiento aumenta el acoplamiento entre clases?,Falso (lo reduce al ocultar la implementacion)
+La abstraccion ayuda a reducir la complejidad del sistema,Verdadero
+Una clase puede ser considerada un tipo de dato personalizado por el programador,Verdadero
+Que es un mensaje en POO?,La comunicacion entre objetos mediante la invocacion de metodos
+Que es un constructor?,Metodo especial que se ejectua automaticamente al instanciar un objeto
+Constructor por defecto,El que provee el lenguaje si el programador no define ninguno
+Normalmente sin parametros
+Sobrecarga (Overloading),Dos o mas metodos con el mismo nombre pero diferente firma 
+parametros
+Sobreescritura (Overriding),Redifinir un metodo de la clase padre en la clase hija para cambiar su comportamiento
+Que es un metodo estatico?,Pertenece a la clase y no a una instancia especifica; 
+Se puede llamar sin crear un objeto.
+Que es un atributo de clase?,Variable compartida por todas las instancias de una clase
+Que es un destructor?,Se encarga de liberar recursos cuando un objeto deja de existir
+Un constructor puede tener un valor de retorno como int o void,Falso
+La palabrada reservada this; hace referencia a la instancia actual del objeto,Verdadero
+Que es un setter?,Metodo para modificar un atributo privado validando los datos
+Que es un Getter?,Metodo para leer el valor de un atributo privado
+Se pueden sobrecargar los constructores,Verdadero
+Un metodo estatico puede acceder directamente a variables de instancia no estaticas,Falso
+Si tienes la clase Calculadora y el metodo sumar(int a y sumar(double a ) que concepto aplicas?,Sobrecarga
+Un objeto Perro hereda de Animal. Ambos tienen el método hacerSonido(), pero Perro imprime "Guau"; Qué es esto?,Sobreescritura
+Superclase / Clase Padre:,La clase de la cual se hereda.
+Subclase / Clase Hija:,La clase que hereda de otra.
+Herencia Simple,Una clase hija solo tiene una clase padre.
+Herencia Múltiple:,Una clase hija hereda de dos o más clases padre (C++ lo permite, Java/C# no).
+Relación "Es-un" (Is-a):,La forma lógica de identificar una herencia (Un Gato "es un" Animal).
+Clase Abstracta,Clase que no se puede instanciar y sirve solo como base; puede tener métodos sin implementar.
+Método Abstracto,Método declarado en una clase base pero que debe ser implementado obligatoriamente por las subclases.
+Interfaz,Un "contrato" que define qué métodos debe implementar una clase, sin proveer la lógica (generalmente).
+Una clase puede implementar múltiples interfaces.,(Verdadero)
+Una clase abstracta debe tener al menos un método abstracto.,(Falso, puede no tener ninguno, pero aun así no ser instanciable)
+Las interfaces pueden tener atributos de instancia (variables que cambian por objeto),Falso, suelen ser constantes final/static
+Generalización,Proceso de extraer características comunes de varias clases para crear una superclase
+Especialización,Proceso de crear subclases para añadir comportamientos específicos a una clase general
+En lenguajes como Java, todas las clases heredan implícitamente de la clase Object,Verdadero
+¿Por qué usarías una Interfaz en lugar de una Clase Abstracta?,Cuando quieres definir un comportamiento que diferentes clases pueden compartir sin importar su jerarquía de herencia
+Asociación,Relación general donde un objeto usa o interactúa con otro
+Agregación,Relación "Tiene-un" donde la parte puede existir independientemente del todo (ej. Profesor y Escuela).
+Composición,Relación "Tiene-un" fuerte donde la parte NO puede existir sin el todo (ej. Habitación y Casa).
+Dependencia,Relación débil donde una clase usa a otra temporalmente (ej. como parámetro en un método).
+Multiplicidad,ndica cuántos objetos de una clase se relacionan con un objeto de otra (1..1, 1..*, etc.).
+En la composición, si se destruye el objeto "Padre", se destruyen los objetos "Hijos".,Verdadero
+La agregación es un tipo de asociación,Verdadero
+Una clase Pedido tiene una lista de Productos. Si el pedido se cancela, los productos siguen existiendo. 
+¿Es Agregación o Composición?,Agregacion
+Una clase Libro tiene Páginas. Si el libro se quema, las páginas también. 
+¿Qué es?,Composicion
+El acoplamiento debe ser alto para un mejor diseño,Falso
+Public,Acceso desde cualquier clase
+Private,Acceso solo dentro de la misma clase
+Protected,Acceso dentro de la misma clase, subclases y clases del mismo paquete
+Default,Acceso solo para clases dentro del mismo paquete
+Un atributo private es heredado pero no es accesible directamente por la subclase,Verdadero
+Requiere getters/setters o cambiar a protected
+Los metodos de una interfaz son public por defecto,Verdadero
+Una clase que no puede tener subclases,No se puede heredar de ella
+Los métodos de una interfaz son public por defecto,Verdadero
+Final (método),Un método que no puede ser sobrescrito por las subclases
+Final (variable),Una constante cuyo valor no puede cambiar tras la asignación
+El modificador static hace que una variable sea compartida por todos los hilos y objetos de esa clase,Verdadero
+Casting (Upcasting),Convertir una referencia de subclase a superclase (siempre seguro)
+Casting (Downcasting),Convertir una referencia de superclase a subclase (requiere verificación)
+Enlace Tardío (Late Binding),El método a ejecutar se decide en tiempo de ejecución, no de compilación.
+El polimorfismo requiere que haya herencia o implementación de interfaces,Verdadero
+Animal a = new Perro();,Verdadero
+Instanceof,Operador para verificar si un objeto pertenece a una clase determinada en tiempo de ejecución
+Tienes una lista de FiguraGeometrica que contiene Círculo y Triángulo. Al recorrerla y llamar a dibujar(), cada uno hace algo distinto. ¿Cómo se llama esto?,Polimorfismo de inclusion
+El polimorfismo permite tratar a objetos de diferentes clases de manera uniforme a través de una interfaz común,Verdadero
+¿Qué es una Clase Concreta?,(Una clase que implementa todos sus métodos y puede ser instanciada)
+¿Es posible aplicar polimorfismo mediante la sobrecarga de métodos?,Falso, usualmente se refiere a la sobrescritura; la sobrecarga es polimorfismo estático/de compilación
+Cohesión,Medida de qué tan enfocada está una clase en una sola tarea (debe ser alta)
+Acoplamiento,Medida de la dependencia entre clases (debe ser bajo)
+Principio de Responsabilidad Única,Una clase debe tener una, y solo una, razón para cambiar
+Principio Abierto/Cerrado,Las clases deben estar abiertas para su extensión, pero cerradas para su modificación
+Un sistema con alta cohesión y bajo acoplamiento es más fácil de mantener,Verdadero
+Inyección de Dependencias,Técnica donde las dependencias de una clase se pasan desde afuera en lugar de crearlas internamente
+La herencia siempre es mejor que la composición,Falso, "Favorece la composición sobre la herencia" es una regla de diseño común
+¿Qué es un Patrón de Diseño?,Una solución general y reutilizable a un problema común de diseño de software
+Singleton,Patrón que asegura que una clase tenga una única instancia y proporciona un punto de acceso global
+Factory Method,Patrón que define una interfaz para crear objetos pero deja que las subclases decidan qué clase instanciar
+Diseñas un sistema de pagos. Tienes PagoEfectivo y PagoTarjeta. Ambos heredan de MetodoPago. ¿Dónde definirías el atributo monto?,En la clase padre MetodoPago
+Una clase Motor no tiene sentido que exista fuera de un Auto
+¿Qué tipo de relación es?,Composicion
+Si ClaseA tiene un método private, ¿puede ClaseB (que hereda de A) llamarlo?,No

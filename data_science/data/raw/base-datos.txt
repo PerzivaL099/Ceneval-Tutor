@@ -1,0 +1,92 @@
+¿Qué es el Modelo Relacional?,Paradigma basado en la teoría de conjuntos donde los datos se estructuran en tablas (relaciones) conectadas por llaves comunes.
+¿Qué es una Llave Primaria (PK)?,Identificador único para cada registro en una tabla. No puede ser nula y lógicamente asegura la integridad de entidad.
+¿Qué es una Llave Foránea (FK)?,Atributo en una tabla que referencia a la PK de otra, manteniendo la integridad referencial.
+¿Qué es la Integridad Referencial?,Regla arquitectónica que asegura que las relaciones entre tablas permanezcan válidas (impide referenciar o borrar datos de los que dependen otros).
+¿Qué es un Índice B-Tree (Árbol B)?,Estructura de datos jerárquica y balanceada que permite búsquedas, inserciones y borrados eficientes en tiempo O(log n).
+¿Qué es un Índice Hash?,Estructura que usa una función hash para búsquedas exactas ultrarrápidas O(1), pero no es útil para buscar por rangos.
+Qué es un Clustered Index (Índice Agrupado)?,Determina el orden físico de almacenamiento de los datos en disco. Solo puede haber uno por tabla.
+¿Qué es un Non-Clustered Index (Índice Secundario)?,Estructura separada de los datos físicos que contiene punteros a las filas. Una tabla puede tener múltiples.
+¿Qué es un Deadlock (Interbloqueo)?,Situación de concurrencia donde dos o más transacciones se bloquean mutuamente esperando recursos que la otra tiene, requiriendo intervención del motor.
+¿Qué es un Stored Procedure (Procedimiento Almacenado)?,Bloque de código SQL precompilado en el servidor. Reduce el tráfico de red, abstrae la lógica y mejora la seguridad.
+¿Qué es un Trigger (Disparador)?,Lógica que se ejecuta automáticamente en respuesta a eventos DML (INSERT, UPDATE, DELETE) en una tabla específica.
+¿Qué es una Vista (View)?,Tabla virtual basada en una consulta SQL. Abstrae lógica compleja y proporciona una capa de seguridad al restringir columnas.
+¿Qué es una Vista Materializada?,Estructura que almacena físicamente el resultado de una vista en disco para optimizar lecturas pesadas, requiriendo estrategias de actualización.
+¿Qué es el Partitioning (Particionamiento)?,División física de tablas enormes en fragmentos más pequeños para mejorar la mantenibilidad y velocidad de escaneo.
+¿Qué es Sharding?,Arquitectura de particionamiento horizontal donde los datos de una misma tabla se distribuyen a través de múltiples servidores físicos independientes.
+¿Cuál es el objetivo principal de la Normalización?,Minimizar la redundancia de datos y prevenir anomalías de inserción, actualización y borrado.
+¿Qué exige la Primera Forma Normal (1NF)?,Todos los atributos deben ser atómicos (indivisibles) y no deben existir grupos repetitivos o arrays en las columnas.
+¿Qué exige la Segunda Forma Normal (2NF)?,Cumplir 1NF y no tener dependencias parciales (ningún atributo no clave debe depender de solo una parte de una PK compuesta).
+¿Qué exige la Tercera Forma Normal (3NF)?,Cumplir 2NF y eliminar dependencias transitivas (ningún atributo no clave debe depender lógicamente de otro atributo no clave).
+¿Qué es la Forma Normal de Boyce-Codd (BCNF)?,Una versión estricta de 3NF que dictamina que para cada dependencia funcional X -> Y, X debe ser una superclave.
+¿Qué es la Desnormalización?,Introducción deliberada de redundancia en el modelo relacional para evitar JOINs costosos y optimizar el rendimiento de lectura.
+¿Qué es un modelo Entidad-Relación (ER)?,Representación conceptual y visual de los datos, sus atributos y la cardinalidad entre ellos.
+Define las siglas ACID en transacciones,Atomicidad, Consistencia, Aislamiento (Isolation), Durabilidad.
+¿Qué es la Atomicidad (ACID)?,Principio de "todo o nada". Si una operación de la transacción falla, todos los cambios se revierten (Rollback).
+¿Qué es la Consistencia (ACID)?,Garantía de que la transacción lleva la BD de un estado válido a otro, respetando constraints y triggers.
+¿Qué es el Aislamiento (ACID)?,Las transacciones concurrentes deben ejecutarse sin afectarse entre sí, simulando secuencialidad.
+¿Qué es la Durabilidad (ACID)?,Una vez que se ejecuta el "Commit", los datos quedan guardados permanentemente, incluso ante fallos de hardware.
+¿Qué es un esquema en Estrella (Star Schema)?,Arquitectura OLAP de Data Warehouse con una gran tabla de hechos (facts) centralizada rodeada de tablas de dimensiones desnormalizadas.
+Nivel de aislamiento: Read Uncommitted.,Permite "lecturas sucias" (leer datos no confirmados por otras transacciones). Es el nivel más rápido pero menos seguro.
+Nivel de aislamiento: Read Committed.,Evita lecturas sucias, pero permite "lecturas no repetibles" (los datos leídos pueden cambiar antes de que termine tu transacción).
+Nivel de aislamiento: Repeatable Read.,Garantiza que los registros leídos no cambien, pero permite "lecturas fantasma" (otra transacción puede insertar filas nuevas que cumplan tu WHERE).
+Nivel de aislamiento: Serializable.,El nivel más estricto. Previene todos los fenómenos de concurrencia bloqueando rangos, pero reduce drásticamente el rendimiento simultáneo.
+¿Qué es el Teorema CAP?,Principio de sistemas distribuidos: solo puedes garantizar simultáneamente dos de tres propiedades: Consistencia, Disponibilidad (Availability) y Tolerancia a Particiones.
+¿Qué es el motor OLTP?,On-Line Transaction Processing. Optimizado para operaciones rápidas del día a día (alta concurrencia de INSERT/UPDATE, lecturas de pocas filas).
+¿Qué es el motor OLAP?,On-Line Analytical Processing. Optimizado para consultas históricas y analíticas complejas que leen millones de filas a la vez.
+Una tabla forzosamente requiere tener un Clustered Index.,Falso. 
+Si no tiene uno, los datos se almacenan sin orden lógico (estructura llamada Heap), aunque por arquitectura se recomienda siempre tenerlo.
+Agregar 15 índices a una tabla acelerará todas las operaciones del sistema,Falso. 
+Los índices aceleran la lectura (SELECT), pero degradan drásticamente la escritura (INSERT/UPDATE/DELETE) al tener que rebalancear el árbol en cada cambio.
+Funciones como SUM() y COUNT() se pueden filtrar usando la cláusula WHERE.,Falso. 
+Las agregaciones deben filtrarse con la cláusula HAVING, posterior a agrupar los datos.
+Un INNER JOIN siempre devolverá la misma o menor cantidad de filas que la tabla principal,Verdadero.
+ Solo retorna la intersección exacta; si no hay coincidencia, la fila se descarta.
+Un LEFT JOIN puede devolver valores nulos.,Verdadero.
+ Retornará nulos en todas las columnas de la tabla derecha si no encuentra correspondencia.
+La instrucción TRUNCATE registra el borrado fila por fila en el log de transacciones.,Falso
+TRUNCATE es una operación DDL que desasigna páginas de datos enteras, haciéndola más rápida que DELETE y sin registrar el detalle en el log.
+Un bloqueo a nivel de tabla (Table Lock) mejora el rendimiento de concurrencia frente a un bloqueo de fila (Row Lock).,Falso
+El bloqueo de fila permite que múltiples transacciones editen diferentes partes de la tabla al mismo tiempo.
+En bases de datos NoSQL Documentales, un cambio de esquema afecta a todos los registros existentes.,Falso
+Su naturaleza schemaless permite que cada documento tenga una estructura distinta sin alterar el resto.
+Para garantizar atomicidad, la base de datos escribe primero en el disco duro antes de confirmar al usuario,Falso
+ Primero escribe en el Write-Ahead Log (WAL) en memoria o disco secuencial, y luego hace el commit por eficiencia.
+DROP TABLE borra los datos pero deja intactos los triggers y permisos asociados a la estructura,Falso
+DROP destruye la estructura, los datos, y todos los objetos dependientes de ella.
+Una dependencia transitiva ocurre cuando la PK depende de un atributo secundario,Falso
+Ocurre cuando un atributo no clave depende de otro atributo no clave (viola la 3NF).
+NoSQL significa que el sistema carece de un lenguaje de consultas estructuradas,Falso
+ Generalmente se lee como "Not Only SQL". Muchos motores NoSQL ofrecen lenguajes de consulta robustos.
+El comando GRANT se utiliza para lenguaje de manipulación de datos (DML),Falso
+ GRANT y REVOKE pertenecen al DCL (Data Control Language) enfocado en seguridad y permisos.
+Un esquema Snowflake gasta menos espacio en disco que un Star Schema,Verdadero
+Al estar normalizadas sus dimensiones, se reduce la redundancia, sacrificando velocidad de consulta.
+Usar un cursor en SQL siempre es más rápido que una operación basada en conjuntos (SET),Falso
+ Las operaciones de conjuntos están altamente optimizadas; los cursores iteran fila por fila, causando un grave cuello de botella.
+La concurrencia optimista asume que no habrá conflictos, verificando los datos solo al momento de hacer el commit,Verdadero
+ Es ideal para lecturas pesadas con pocas ediciones simultáneas.
+En el Teorema CAP, los motores relacionales clásicos en un solo nodo priorizan Tolerancia a Particiones,Falso
+ Priorizan Consistencia y Disponibilidad (CA), asumiendo que la red no se partirá.
+Una PK compuesta significa que hay varias llaves primarias en una sola tabla,Falso
+Sigue siendo una sola Llave Primaria, pero está conformada por la combinación de dos o más columnas.
+"Consistencia eventual" significa que al escribir un dato, este se replica instantáneamente a todos los nodos,Falso
+ Significa que el sistema confirmará la escritura y, eventualmente (en milisegundos o segundos), los demás nodos se sincronizarán.
+Un índice cubierto (Covering Index) incluye en su estructura todas las columnas solicitadas en un SELECT,Verdadero
+ Esto evita que el motor tenga que hacer búsquedas físicas en la tabla principal (Key Lookups), maximizando la velocidad.
+En un e-commerce, consultar el catálogo por 'Marca' tarda 8 segundos. Tienes millones de filas. ¿Cuál es tu primera acción a nivel lógico?,Analizar el plan de ejecución y crear un Índice Secundario (Non-Clustered) en la columna 'Marca'.
+Tienes un sistema bancario. Transferir fondos implica restar a A y sumar a B. ¿Qué estructura lógica debes implementar para evitar saldos fantasmas si falla la red?,Envolver ambas operaciones en un bloque de Transacción (BEGIN TRAN ... COMMIT / ROLLBACK) para garantizar la Atomicidad.
+Una tabla de 'Logs_Auditoria' está colapsando el servidor porque recibe cientos de miles de inserciones diarias y nunca se actualizan. ¿Qué arquitectura física aplicas?,Particionamiento horizontal de la tabla (Partitioning) por rangos de fecha (ej. por mes).
+Estás diseñando un catálogo de productos donde un televisor tiene especificaciones (resolución, pulgadas) muy distintas a un zapato (talla, material). ¿Qué tipo de BD eliges?,Base de datos NoSQL Documental (ej. MongoDB) para evitar tener cientos de columnas nulas en una BD Relacional.
+La tabla 'Alumnos' tiene las columnas ID, Nombre, Carrera y Facultad. Sabiendo que la Facultad depende enteramente de la Carrera, ¿qué problema de diseño tienes?,Una violación a la 3NF. Debes separar Carrera y Facultad en otra tabla para evitar redundancia y anomalías de actualización.
+Dos procesos modifican la BD al mismo tiempo. El proceso A bloquea la fila 1 y pide la 2. El proceso B bloquea la 2 y pide la 1. Ambos se congelan indefinidamente. ¿Cómo se llama este fenómeno?,Deadlock (Interbloqueo). El motor resolverá matando uno de los procesos como "víctima".
+Una aplicación de mapas necesita calcular dinámicamente la ruta con menos tráfico entre 10 puntos de la ciudad. ¿Qué motor NoSQL es el idóneo?,Base de datos orientada a Grafos (como Neo4j), optimizada lógicamente para calcular caminos matemáticos en nodos y aristas.
+El equipo de analítica dispara una consulta masiva diaria que bloquea la tabla de Ventas durante 15 minutos, deteniendo las compras en producción. ¿Cómo lo solucionas a nivel infraestructura?,Configurar una Réplica de Lectura (Read Replica). Mandarás el tráfico OLTP al máster y el OLAP a la réplica.
+Tienes una consulta con múltiples condiciones "OR" que obliga al motor a ignorar los índices y hacer un escaneo completo. ¿Cómo optimizas el código SQL?,Separar la consulta en dos SELECTs y unirlos mediante un UNION ALL.
+Requieres un sistema de caché ultrarrápido para guardar los tokens de sesión temporal de usuarios web. No te importa si la BD se apaga y pierde los datos. ¿Qué tecnología usas?,Base de datos Clave-Valor en memoria (como Redis o Memcached).
+Diseñando una red social global, prefieres que los usuarios puedan dar "Like" sin interrupciones (alta disponibilidad) aunque un servidor en Asia tarde unos segundos en ver ese Like (sacrificas consistencia inmediata). ¿Qué modelo estás aplicando?,Modelo AP del teorema CAP, utilizando consistencia eventual.
+Ejecutas un proceso masivo nocturno que inserta 3 millones de registros en SQL Server, pero el disco duro se queda sin espacio a la mitad del proceso y todo falla. ¿Por qué ocurrió?,Porque cada INSERT individual creció el Log de Transacciones incontrolablemente antes de hacer el Commit. 
+Solución: Hacer commits por lotes (ej. cada 10,000 filas).
+Tienes una arquitectura de microservicios con 5 dominios distintos (Inventario, Envíos, Cobros, etc.). ¿Es buena práctica que todos lean y escriban en una misma base de datos monolítica?,No
+La arquitectura recomendada es "Database per Service", dándole a cada microservicio su propia BD para evitar acoplamiento y cuellos de botella.
+Caso: En una auditoría, notas que una tabla tiene la columna "Dirección_Completa" guardando (Calle 123, Colonia Centro, CDMX). ¿Qué forma normal se está violando?,La Primera Forma Normal (1NF), ya que el atributo no es atómico. Debería dividirse en columnas de Calle, Colonia, y Ciudad.
+Un dashboard financiero complejo tarda 2 minutos en cargar porque une (JOIN) 10 tablas masivas calculando promedios. Los datos no necesitan estar al segundo. ¿Cómo lo aceleras desde la base de datos?,Creando una Vista Materializada que calcule y agrupe los datos por la noche, permitiendo que el dashboard consulte directamente el resultado pre-calculado en milisegundos.

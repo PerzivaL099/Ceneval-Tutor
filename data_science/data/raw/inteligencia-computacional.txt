@@ -1,0 +1,169 @@
+Como saber que modelo elegir?,Que quiero predecir?
+El output es continuo, discreo o inexistente?
+Existen etiquetas?
+Que informacion estara disponible en produccion?
+Que es un modelo de ML,Representa una funcion que puede ser utilizada para predecir nuevos valores.
+Valores de entrada son caracteristicas
+Valores a predecir son etiquetas
+Que son los probelmas de clasificacion,Se utiliza pra predecir una etiqueta, categoria discreta, usualmente usando una etiqueta
+Modelos comunes son regresion logistica, rf, svm.
+Que son los problemas de regresion,El objetivo es predecir un valor numero
+Ejemplo pronosticar el numero de ventas
+Algoritmos comunes son regresion lineal y arboles de regresion
+Diferencia de valores predecidos y valores reales
+Que son los problemas de clustering?,Aprendizaje no supervisado para encontrar similitudes y patrones en un conjunto de datos.
+Algoritmo comun es K-Means
+Que es EDA?,Proceso inicial para entender los datos antes de modelar
+Conocer dimensiones, tipos y significado de variables
+Analizar distribucion de target
+Identificar valores faltantes y outliers.
+Que es Feature Engineering?,Transformar datos crudos, incorporar conocimiento del dominio, facilitar el aprendizaje del dominio
+Tecnicas basicas de feature engineering,Escalado
+Codificacion categorica
+Manejo de valores faltantes
+Creacion de nuevas variables
+Codificacion categorica,OneHotEncoder 
+Utilizar cuando la variable no tiene orden inherente 
+Codifica cada categoría en una característica binaria independiente 
+Ejemplos: país, sexo, tipo de contrato 
+OrdinalEncoder 
+Utilizar cuando existe orden natural 
+Convierte cada categoría a un valor numérico según su orden 
+Ejemplo: nivel de escolaridad
+Transformaciones numericas,Escalamiento: Escala valores de una variable a un rango delimitado, especialmente util en algoritmos sensibles a magnitudes.
+PowerTransformer: Utilizar datos que no estan normalmente distribuidos, pueden combinarse con escalamiento para obtener una columan normalizada y con distribucion normal.
+Que hacer cuando haya valores faltantes?,Reemplazar: valores faltantes con algun otro valor, normal usar media o mediana en columnas numericas o la moda en variables categoricas.
+Ignorar: Cuando la mayoria de elementos de una columna no existen, podemos omitirla en nuestro modelo.
+Eliminar: Si cantidad de elementos faltantes es minima, se puede eliminar las filas sin valor.
+Binning,Discretar una variable continua, convertir valores continuos en el rango 0, 100] a las categorías [0,26), [26, 51), [51, 76) y [76, 100]
+Columnas derivadas,Crear columnas a partir de conocimiento del dominio, una columna de aprobado a partir de columna calificacion final
+Fechas,Convertir columna fecha en columnas separadas para el año, mes y dia
+Porque separamos datos?,Medir generalizacion
+Evitar overfitting
+Simular produccion
+Data leakage,Uso de informacion que no estaria disponible en produccion
+Escalar todo el dataset
+Features derivadas del target
+Estadisticas globales filtradas
+Como se evaluan los modelos de regresion,En terminos de diferencia de valores predecidos y valores reales de y
+MAE - Mean Absolute Error,Mide el error absoluto promedio entre las predicciones y los valores reales.
+Valor cercano a 0 mejor desempeño
+Mean Squared Error - MSE,Error cuadratico promedio entre predicciones y valor reales
+Penalizar erroes grandes.
+Root Mean Squared Error - RMSE,Similar al MSE, pero en las mismas unidades que la variable objetivo.
+MAE
+R^2,Proporcion de la varianza en la variable dependiente que es predecir a partir de las variables independientes.
+Matriz de confusion,Terminos de cantidad de predicciones correctas e incorrectas
+Visualizar desempeno del modelo
+Partes de matriz confusion,Verdadero Posito
+Falso Positivo
+Verdaderos Negativos
+Falsos Negativos
+Accuracy,Proporcion de predicciones correctas sobre el total de predicciones realizadas.
+Precision,Proporcion de verdaderos positivos sobre el total de predicciones positivas realizadas
+Recall,Mide proporcion de verdaderos positivos sobre el totla de casos positivos reales
+Costo de falsos negativos es alto
+F1 Score,Medida armonica entre la precision y el recall
+Cuando busques balance entre precision y recall
+Equilibrio entre precision y recall,Conforme se aumenta el umbral la prediccion mejora y el recall disminuye
+Curva ROC y AUC,Visualizar el desempeño de modelo de clasificacion binaria a diferentes umbrales de decision
+Curva ROC y AUC pt 2.,Se puede calcular el area bajo la curva que proporciona medida agregada del rendimiento del modelo en todos los umbrales posibles.
+La métrica AUC puede tomar valores entre 0 y 1, donde 1 indica un modelo perfecto y 0.5 sugiere un rendimiento aleatorio.
+Metricas de clustering,Puede ser desafiante debido ausencia de etiquetas
+Distancia promedio centroide
+Distancia promedio a otros centroides
+Distancia maxima al centroide
+Indice de Silueta
+Que es serializar un modelo?,Convertir objeto en memoria a formato que pueda guardarse en disco y reconstruirse posteriormente
+Incluye
+Parametros aprendidos
+Hiperparametros
+Estructura del pipeline
+Transformaciones de entrada
+Flujo basico de serializar,Entrenar modelo
+Evaluar desempeño
+Serializar artefacto
+Cargar artefacto
+Realizar Inferencia
+Que es joblib?,Creacion de pipelines para tareas de larga duracion, especialmente enfocada en reporducibilidad, rendimiento y paralelizacion
+Usa pickle
+Limitaciones de joblib,Solo funciona en python
+Sensible a versiones de librerias
+Seguridad: puede ejecutar codigo malicioso
+Que es ONNX?,Open Neural Network Exchange
+Formato estandarizado para modelos y un runtime para ejecutar inferencia.
+No todos los modelos de ML pueden ser convertidos a ONXX, pero la mayoria de modelos comunes si.
+Cuando usar ONNX y cuando Joblib,ONNX
+ Necesitas portabilidad entre lenguajes y plataformas
+ Solo estas interesado en la inferencia
+
+Joblib
+ Confias en la fuente del modelo
+ Solucion rapida y facil para experimentacion
+Que es Rest?,Representational State Transfer
+Estilo arquitectonioc para disenar servicios web que se comunican mediante HTTP.
+Principios de Rest,Cliente-servidor: Separacion de responsabilidaddes
+Stateless: Cada peticion contiene informacion necesaria
+Recursos: Recurso identificable mediante URLS.
+Metodos HTTP: Uso semantico de GET, POST, PUT, DELETE
+Metodos HTTP,Get - obtener recursos
+Post - crear recursos
+Put - actualizar/reemplazar
+Patch - actualizar
+Delete - eliminar recursos
+Codigos respuesta HTTP,200 - OK
+201 - Created
+400 - Bad Request
+404 - Not Found
+500 - Internal Server Error
+Rest para ML,Exponer un modelo de ML previamente entrenado para realizar predicciones en tiempo real.
+Esto permite a aplicaciones cliente (web, móviles, etc.) consumir el modelo a través de HTTP.
+Es especialmente útil para proveer inferencias como servicio o integrar modelos en sistemas másgrandes, sin necesidad de compartir el código del modelo o los datos de entrenamiento.
+Flujo típico
+1. Cliente envía datos de entrada (features) en una petición POST
+2. Servidor procesa la petición con el modelo
+3. Servidor responde con la predicción
+Que es FastAPI?,Framework moderno y alto rendimiento para APIs en Python
+Caracteristicas principales de FastApi?,Rapido
+Validacion Automatica: Mediante tipos de Python
+Documentacino automatica: Swagger UI, reDoc
+Async: Soporte nativo para operaciones asincronas
+Basado en estandares: OpenAPI y JSON Schema
+Consideraciones en produccion de REST,Validacion estricta de entrada
+Autenticacion y autorizacion controlar acceso
+Rate limiting para prevenir abuso
+Manejo de errores y logging para monitoreo
+Cuando se debe utilizar OneHotEncoder?,Modificar categorias sin orden
+Que transformacion son comunes en fechas?,Extraer año, mes y dia
+Calcular duracion o antiguedad
+En que caso se recomienda utilizar PowerTransfomer?,Cuando los datos no estan normalmente distribuidos
+Cuales son los objetivos de EDA?,Entender datos antes de modelar
+Identificar valores faltantes y outliers
+Explorar relaciones entre variables
+Utilizar el conjunto de validacion o pruebas durante la fase de preprocesamiento puede ocasionar overfitting,Verdadero
+Cuales son caracteristicas de algoritmos de clustering,Etiquetas no se conocen previamente
+Son no supervisados
+Caracteristica principal de un problema de regresion,Predice un valor numerico
+Cual no es un algoritmo de clasificacion?,Regresion lineal
+Cual es la metrica mas apropiada para penalizar errores mayores en problemas de regresion?,MSE
+Cuales son metricas apropiadas para problemas de regresion?,MAE y MSE
+Para un modelo de deteccion de fraude bancario, que metrica debera ser optimizada?,Recall
+En que unidades se expresa RMSE?,Misma unidad de y
+Cual metrica seria mas adecuada para evaluar un modelo de regresion con muchos outliers?,MAE
+Proposito de GridSearchCV,Encontrar mejores hiper parametros para un modelo
+Cuales son formas de evaluar modelos de clasificacion?,Matriz de confusion
+ROC-AUC
+Recall
+Accuracy
+Mejorar el valor de recall impacta valor de accuracy,Verdadero
+Como saber que tan bueno es un RMSE,Mientras mas cercano a 0 mejor
+Que significa API?,Application Programming Interface
+Que significa Rest?,Representational State Transfer
+Que formatos son comunmente utilizados por APIs web para enviar y recibir informacion?,XML
+JSON
+Caracteristicas de un API RESTful?,Metodos HTTP de forma consistente
+Es stateless
+Que representan las URL en REST,Recursos
+En rest, que significa HTTP,Accion
+Que es el principio HATEOAS,Las respuestas de un API contienen enlaces para navegar por recursos.
+Que es un archivo OpenAPI/Swagger?,Especificacion que describe al API

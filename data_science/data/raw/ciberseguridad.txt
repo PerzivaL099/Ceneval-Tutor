@@ -1,0 +1,173 @@
+Que es seguridad?,Proteger ciertos "activos/recursos" valiosos en contra de "amenazas/intrusos"
+Contextos donde se use seguridad,Seguridad personal, Seguridad Corporativa, Seguridad Nacional, Seguridad Operacional, Seguridad en comunicaciones, Seguridad en la nube
+En que se enfoca la seguridad en ICC,Diseño de algoritmos y tecnicas
+Modelos y mecanismos de seguridad
+Proteccion de la informacion
+Que es NIST?,National Institute of Standards and Technology
+Protecicon brindada a un sistema de informacion para alcanzar los objetivos aplicables de preservar la integridad,disponibilidad y confidencialidad
+Seguridad en terminos sencillos es dificil porque?,Se centra en que "cosas" malas nunca suceden, por lo que se debe conocer cuales o que son esas cosas malas.
+El defensor tiene que encontrar y eliminar TODAS las vulnerabilidades explotables.
+CIA TRIAD,Confidencialidad
+Integridad
+Disponibilidad
+Confidencialidad CIA,Solo personas/sistemas autorizados pueden acceder a datos protegidos
+Integridad (CIA),Solo personas/sistemas autorizados pueden modificar, destruir o crear datos
+Disponibilidad CIA,Acceso a los datos/sistemas en todo momento y con eficiencia
+Que es una vulnerabilidad,debilidad en el sistema que pueden ser utilizadas para causar perdidas o daños.
+Que es una Amenaza?,Conjunto de circunstancias potenciales que podrian causar daño o perdida. La amenaza perpetra un ataque al sistema
+Como se clasifican las amenazas?,Humanas
+Causas naturales
+Cuales son las amenazas naturales,Fuego
+Temblor
+Inundaciones
+Tormentas
+Nevadas
+Apagones electricos
+Cuales son las amenazas humanas?,No maliciosos 
+Maliciosos
+Cuales son las amenazas Maliciosas,Directos -> Actuar como otra persona
+Aleatorios -> Malware
+Tipos de ataques,Interrupcion
+Modificacion
+Intercepcion
+Fabricacion
+Definicion y objetivo de ataques pasivos,Atacante monitorea o intercepta la informacion sin alterarla. 
+Objetivo es obtener informacion sin ser detectado.
+Tipos de ataques pasivos,Analisis de trafico
+Rastreo inalambrico
+Dumspter driving
+Footprinting
+Shoulder surfing
+Definicion y objetivo de ataque activo,El atacante modifica, corrompe o destruye la informacion/datos del sistema con malas intenciones (intermediario)
+Tipos de ataques activos,Phishing
+Spoofing: Suplantacion de identidad de un sistema.
+Malware: Software disenado para ejecutar acciones maliciosas
+Denial-of-service(DOS): 
+Inyeccion SQL: Insercion de informacion inesperada 
+Cross-Site Scripting: Insercion de contenido malicioso en una pagina web que afecta otros usuarios.
+Thread Landscape,Entorno completo donde ocurren ataques
+Amenazas
+Actores
+Vectores de ataque
+Contexto digital
+Trheat landscape: Phishing de actualización de contraseña institucional,Escenario: Correo 
+▪ Amenaza: Ingeniería social orientada al robo de credenciales institucionales (Phishing) 
+▪ Vulnerabilidad: Empleado distraído 
+▪ Actor: Ciberdelincuente externo que busca acceso a cuentas universitarias 
+▪ Vector de ataque: Correo electrónico institucional falso 
+▪ Contexto digital: Uso frecuente de correo institucional Trabajo remoto Confianza en correos con logos oficiales
+Que es criptografia?,Estudio de un secreto (kryptos) escrito (graphe)
+Arte o Ciencia - principios y metodos para transformar un mensaje legibel en uno ilegible y regresar el mensaje a su forma original
+Usos comunes de criptografia,Contraseñas
+Criptomonedas
+Navegacion web segura
+Firmas electronicas
+Autenticacion
+Comunicaciones
+Estructura de criptosistema,Entrada
+Algoritmo Encriptacion
+CipherText
+Algoritmo Desencriptacion
+Salida
+Que es un sistema simetrico?,Sistema de llave privada
+La misma llave encripta y desencripta
+Algoritmos de encriptacion y desencriptacion procesos espejo
+Como se valida la seguridad de un algoritmo?,Mediante el escrutinio publico y el analisis de expertos, no mediante el secreto de su diseño.
+El problema se reduce a transmitir y/o almacenar de manera segura la llave.
+Que es la encriptacion de cesar?,Cada letra de un texto original es reemplazada por otra letra situada un número fijo de posiciones más adelante o atrás en el alfabeto.
+Existe alguna prueba matematica para probar un algoritmo de encriptacion,La unica forma de tener la certeza de que un algoritmo es seguro es intentar descifrarlo y fallar.
+Que es el principio de Kerchoffs?,Debe ser seguro incluso si todo sobre el sistema, excepto la clave es de conocimiento publico.
+Como funciona un ataque de fuerza bruta?,Verificar/probar pro cada llave posible
+Contramedidas
+ 1.-Longitud de llave
+ 2.-Cantidad de llaves
+Como gestionar y almacenar una llave,No almacenar en texto plano
+Usar 
+ 1.-Cifrado
+ 2.-Harware seguro
+ 3.-Mecanismos de control de acceso.
+ 4.-Derivacion de llave
+Que es el analisis de frecuencia,Algunas letras son mas frecuentes que otras. El analisis de frecuencia aprovecha esa regularidad para hacer hipotesis sobre que letra es cual.
+En inglés la letra mas frecuente es la "e", y le siguen "t, a, o, i, n , s"
+Ejemplo: DWWDFN DW ZKHQ WKH XQLYHUVH VWDQGV VWLOO
+"D" aparece 7 veces
+"W" aparece 5 veces
+Es probable que "D" corresponda a "E"
+"W" corresponda a "T"
+Que es un Bigrama,Algunos pare de letras son más frecuentes que otros
+ Ejemplo: "D" corresponde a "T" y si, de "D" sigue con frecuencia "E" entonces es probable que "E" corresponda a "H"
+Que es un codificador de Vigenere,Corrientes lineales, pero diferentes para cada letra
+Se tiene como llave una palabra de cierto tamano
+Una llave con mayor longitud incrementa la complejidad de romper el ciphertext
+Cada letra de la llavae representa los saltos a realizar
+Que es el metodo de Kasiski,Estima la longitud de la llave en cifrados como Vigenère. Analizafragmentos repetidos del ciphertext, ya que estas repeticiones suelen indicar que elmismo segmento del texto original fue cifrado con la misma parte de la llave
+Que Protege Realmente una llave?,Es componente necesario pero no suficiente para seguridad de un sistema
+Su funcion principal es proteger contra ataques de fuerza bruta, haciendo inviable probar todas las combinaciones posibles
+Que protege una llave,Ataques de fuerza bruta
+Accesos triviales o no autorizados
+Exploracion exhaustiva de combinaciones
+Que no protege una llave,Algoritmos con diseno criptografico debil
+Patrones de lenguaje explotables
+Reutilizacion o mala gestion de la llave
+Tecnicas de criptoanalisis
+Es CIA suficiente?,Nos dice que se daño, pero en incidentes reales tambien impotra quien hizo que , si podemos probarlo, si el dato sigue siendo util/creible y si el control era usable o si empujo al usuario a equivocarse
+Que se ocupa para describir incidentes modernos,Autenticidad
+Posesion/control
+Utilidad
+Responsabilidad
+Propiedades de seguridad computacional,Confidencialidad
+Integridad
+Disponibilidad
+Autenticidad
+Posesion/Control
+Utilidad
+Que es autenticidad?,Solo las entidades legitimas pueden demostrar que son quienes dicen ser
+Que es la posesion/control,Solo las entidaddes autorizdas deben tener control fisico o logico del archivo.
+Que es utilidad?,El activo debe mantenerse utilizable y comprensible para quienes estan autorizados
+Que dice CIA, Parkerian Hexad y Responsabilidad,Cia dice que debe protegerse
+Parkerian Hexad ayuda a describir que se vio comprometido
+Responsabilidad dice quien debe responder por ello.
+Como NIEST define el riesgo,Probabilidad de que una amenza explote una vulnerabilidad y cause impacto adverso
+Riesgo = Amenaza * Vulnerabilidad * Impacto
+NIST determina probabilidad de que ocurra el riesgo,Capacidad del atacante
+Motivacion
+Oportundidad
+Proteger lo que tiene alto impacto y alta probabilidad
+Proceso formal de evaluacion de riesgo (segun NIST),Identificar activos
+Identificar amenazas
+Identificar vulnerabilidades
+Determinar impacto
+Determinar probabilidad
+Determinar nivel de riesgo
+Priorizar controles de seguridad de acuerdo a las normas establecidas.
+Que son los controles administrativos,Son el marco que define como se aplicaran los controles tecnicos y fisicos
+Politica de contraseñas
+Capacitacion de phishing
+Que son los controles tecnicos,Reduce riesgo mediante mecanismos automatizados
+Encriptacion
+Firewall
+Hash de contraseñas
+Multifactor authentication
+Que son los controles fisicos,Proteger la infraestructura - reduce superficie de ataque fisica
+Cerraduras
+CCTV
+Guardias
+Controles biometricos de acceso
+Que son los controles preventivos,Reducen probabilidad de riesgo
+Firewall
+Encriptacion
+MFA
+Capacitacion
+Que son los controles detectivos,Reducir tiempo deteccion
+Intrusion Deteccion System
+Logs
+Security Information and Event Management
+Alertas de activiad sospechosa
+Que son los controles correctivos,Reducir impacto
+Backups
+Plan de recuperacion
+Respuesta a incidentes
+Parcheo posterior
+Que es defensa en capas - defense in depth,Diferentes tipos de controles
+Administrativos, Tecnicos, Fisicos
+Que es un conjunto finito,Numero contable de elementos, pueden representarse mediante un numero natural y tiene un fin definido

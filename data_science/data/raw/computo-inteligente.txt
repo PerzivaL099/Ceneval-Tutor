@@ -1,0 +1,126 @@
+Que define a un agente inteligente?,Una entidad capaz de percibir su entorno mediante sensores y actuar sobre el mediante actuadores para alcanzar objetivos especificos.
+En que se diferencia un Agente de Reflejo Simple de uno Basado en Modelos,El de reflejo simple actua solo con la percepcion atual.
+El basado en modelos mantiene un estado interno que representa aspectos del mundo que no puede ver en el momento
+Cual es al principal ventaja de la busqueda A sobre Breadth-First Search(BFS),A es una busqueda informada lo que le permite ser mucho mas eficiente al dirigir la busquda hacia el objetivo.
+Mientras que BFS es una busqueda ciega que explora todos los nodos por nivel
+Que condicion debe cumplir una heuristica para asegurar que A encuentre la solucion optima,Debe ser admisible, es decir nunca sobreestimar el costo real para llegar al objetivo
+Como funciona Breadth-First Search (BFS) y que estructura de datos utiliza?,Explora nivel por nivel todos los vecinos antes de pasar al siguiente nivel de profundidad.
+Utiliza cola (FIFO)
+Que es la funcion de activacion en una red neuronal basica?,Es una funcion matematica que decide si una neuorna debe activarse o no, transformando la suma ponderada de las entradas en un valor de salida.
+En IA, que se entiende por "Racionalidad"?,La capacidad de un agente para seleccionar la accion que, dada la evidencia maximice su medida de desempeño esperada.
+Cual es el problema de la explosion combinatoria en algoritmos de busqueda?,El crecimiento exponencial del espacio de estados a medida que aumenta la profundidad del problema, haciendo inviable la busqueda ciega.
+Que representa el peso(w) en una conexion sinaptica de una red neuronal?,La importancia o fuerza de una entrada especifica en la decision final de la neurona.
+Que tipo de problemas resuelve mejor un algoritmo de busqueda como A?,Problemas de navegacion, planificacion de rutas o juegos donde se conoce el estado inicial, el final y el costo de movimiento.
+Que significa las siglas KDD y cual es su objetivo?,Knowledge Discovery in Databases
+Procesos completo de identificar patrones validos, novedosos, potencialmente utiles y comprensibles a partir de grandes volumenes de datos.
+Cuales son las etapas principales del proceso KDD,Seleccion, Limpieza/Preprocesamiento, Transformacion, Mineria de Datos e Interpretacion/Evaluacion
+Que diferencia al Aprendizaje Supervisado del No Supervisado?,Supervisado usa datos etiquetados (la respuesta es correcta)
+No Supervisado busca estructuras o patrones ocultos en datos sin etiquetas
+Como funciona el algoritmo K-means,Algoritmo de clustering que particiona n datos en k grupos; asignado cada dato al centroide mas cercano y recalculando los centroides iterativamente.
+Cual es la principal debilidad de K-means?,Requiere que el usuario especifique el numero de clusters k de antemano y es sensible a valores atipicos.
+Que es un arbol decision en mineria de datos?,Un modelo de aprendizake supervisado que utiliza una estructura de arbol para predecir el valor de una variable objetivo mediante reglas de decision logicas.
+Que mide la "Ganancia de Informacion o el Indice Gini" en un arbol decision?,Miden la puerza o el desorden (entropia) de los datos para decidir que atributo usar para dividir los nodos del arbol.
+Que es el Overfitting (Sobreajuste) en modelos de clasificacion?,Cuando un modelo aprende demasiado bien los detalles y el ruido de los datos de entrenamiento, perdiendo su capacidad de generalizar con datos nuevos.
+En KDD, en que consiste la fase de Limpieza de Datos?,En el tratamiento de datos ruidosos, valores faltantes o inconsistencias para mejorar la calidad de los resultados de la mineria.
+Para que se utiliza el Clustering en el mundo real?,Segmentacion de clientes, compresion de imagenes, deteccion de anomalias o agrupacion de documentos similares.
+Que es un sistema distribuido?,Una coleccion de computadoreas independeintes que aparecen ante los usuarios como un unico sistema coherente.
+Como funciona la arquitectura Cliente-Servidor?,Un proceso (cliente) solicita un servicio y otro proceso (servidor) atiende la peticion y devuelve una respuesta.
+Que es la escalabilidad Horizontal (Scaling Out),Incrementar la capacidad del sistema añadido mas nodos o maquinas a la red.
+Que es la escalabilidad Vertical (Scaling Up)?,Incrementar la potencia de un nodo existentente añadiendo CPU,RAM o almacenamiento.
+Cual es la diferencia entre Alta Disponibilidad y Tolerancia a Fallos?,La disponibilidad busca minimizar el tiempo de inactividad
+Tolerancia a fallos busca que el sistema siga funcionando correctamente incluso si un componente falla
+Que es un Sistema de Archivos Distribuidos (DFS),Permite a multiples usuarios acceder y compartir archivos almacenados en diferentes nodos de una red de forma transparente.
+En un sistema distribuido, que significa la transpariencia de localizacion?,Que el usuario puede acceder a un recurso sin necesidad de conocer su ubicacion fisica en la red
+Que establece el Teorema CAP para sistemas distribuidos?,Es imposible garantizar simultaneamente mas de 2 de las siguientes 3 propiedaades.
+Consistencia, Disponibilidad y Tolerancia a la Particion.
+Que es un Middleware en computacion distribuida?,Capa de software que se situa entre el sistema operativo y las aplicaciones para facilitar comunicacion y coordinacion entre nodos distribuidos.
+Que es el Balance de Carge (Load Balancing),Tecnica de distribuir las peticiones entrantes de manera equitativa entre varios servidores para evitar cuellos de botella y mejorar la disponibilidad.
+Que es un Agente Inteligente?,Una entida que percibe su entorno mediante sensores y actau sobre el mediante actuadores para lograr objetivos
+Que caracteriza a un Agente de Reflejo Simple?,Toma decisiones basadas únicamente en la percepción actual, siguiendo reglas de condición-acción.
+¿Qué es un Agente Basado en Modelos?,Un agente que mantiene un estado interno para seguir la pista de partes del mundo que no puede ver en el momento.
+¿Qué define a un Agente Basado en Objetivos?,Además del estado, posee información sobre metas que guían sus acciones para elegir las que llevan al éxito.
+¿Qué es un Agente Basado en Utilidad?,Utiliza una función de desempeño para elegir la acción que no solo llega a la meta, sino que lo hace de la manera más "eficiente" o preferible.
+¿Qué es un entorno "Determinista"?,Aquel donde el siguiente estado está completamente determinado por el estado actual y la acción del agente.
+¿Qué es un entorno "Estocástico"?,Aquel donde existe incertidumbre y el resultado de una acción no es totalmente predecible.
+¿Qué diferencia a un entorno episódico de uno secuencial?,En el episódico, la acción actual no afecta decisiones futuras; en el seEuencial, las acciones tienen consecuencias a largo plazo.
+¿Qué es la búsqueda "Ciega" o No Informada?,Estrategias que no tienen información adicional sobre el costo de los estados más allá de la definición del problema.
+¿Cómo funciona Breadth-First Search (BFS)?,Explora todos los nodos de un nivel antes de bajar al siguiente.
+¿Qué estructura de datos usa BFS?,Una cola (FIFO).
+¿Cuál es la principal ventaja de BFS?,Es completo y encuentra la solución óptima si todos los costos de paso son iguales.
+¿Cuál es la principal desventaja de BFS?,Su alta complejidad de memoria (exponencial).
+¿Cómo funciona Depth-First Search (DFS)?,Explora el camino más profundo posible antes de retroceder (backtracking).
+¿Qué estructura de datos usa DFS?,Una pila (LIFO).
+¿Qué es la búsqueda "Informada"?,Aquella que utiliza conocimiento específico del dominio (heurísticas) para guiar la búsqueda.
+¿Qué es una Función Heurística (h(n))?,Una estimación del costo más barato desde el nodo n hasta el objetivo.
+¿Cuál es la fórmula del algoritmo A?,$f(n) = g(n) + h(n)$, donde $g(n)$ es el costo acumulado y $h(n)$ la estimación al futuro.
+Qué significa que una heurística sea "Admisible"?,Que nunca sobreestima el costo real para alcanzar el objetivo.
+¿Qué significa que una heurística sea "Consistente"?,Que para cada nodo $n$ y cada sucesor $n'$, el costo estimado hacia la meta no sea mayor que el costo de ir a $n'$ más el costo estimado desde $n'$.
+¿Qué es el Espacio de Estados?,El conjunto de todas las configuraciones posibles que puede alcanzar un problema.
+¿Qué es una Red Neuronal Artificial?,Un modelo computacional inspirado en la estructura biológica del cerebro para procesar información.
+¿Qué es un Perceptrón Simple?,La unidad básica de una red neuronal que realiza una suma ponderada de entradas y aplica una función de activación.
+¿Qué es el "Bias" (Sesgo) en una neurona?,Un valor adicional que permite desplazar la función de activación para ajustar mejor los datos.
+¿Para qué sirve la Función de Activación?,Para introducir no linealidad en el modelo, permitiendo aprender patrones complejos.
+Menciona tres funciones de activación comunes.,Sigmoide, ReLU (Rectified Linear Unit) y Tanh.
+¿Qué es el "Learning Rate" (Tasa de Aprendizaje)?,Un hiperparámetro que define qué tan grandes son los pasos que da el algoritmo al ajustar los pesos.
+¿Qué es el Backpropagation?,Algoritmo utilizado para entrenar redes neuronales calculando el gradiente del error y distribuyéndolo hacia atrás para ajustar los pesos.
+¿Qué es una "Capa Oculta"?,Capas intermedias entre la entrada y la salida donde se extraen características de alto nivel.
+¿Qué diferencia a una Red Feedforward de una Recurrente?,En Feedforward la información viaja en un solo sentido; en Recurrente existen ciclos (tienen "memoria").
+¿Qué es el Test de Turing?,Una prueba de la capacidad de una máquina para exhibir un comportamiento inteligente indistinguible del de un humano.
+¿Qué es un problema NP-completo en búsqueda?,Problemas donde encontrar la solución óptima es computacionalmente costoso y crece exponencialmente.
+¿Qué es la búsqueda Greedy (Voraz)?,Algoritmo que elige siempre el nodo que parece estar más cerca de la meta según la heurística, ignorando el costo pasado.
+¿Qué es la Minería de Datos?,El proceso de descubrir patrones, correlaciones o anomalías en grandes conjuntos de datos.
+¿Qué es el proceso KDD?,Knowledge Discovery in Databases; el proceso metodológico para extraer conocimiento útil de los datos.
+¿Cuál es la primera etapa del KDD?,Selección de datos (identificar fuentes y subconjuntos relevantes).
+¿En qué consiste el Preprocesamiento/Limpieza en KDD?,Eliminar ruido, manejar datos faltantes e integrar fuentes diversas.
+¿Qué es la Transformación de datos?,Convertir datos a formatos adecuados (normalización, agregación).
+¿Cuál es la diferencia entre KDD y Minería de Datos?,KDD es el proceso completo; la Minería de Datos es solo la etapa donde se aplican los algoritmos.
+¿Qué es el Aprendizaje Supervisado?,El modelo aprende a partir de datos de entrenamiento que ya incluyen la respuesta correcta (etiquetas).
+¿Qué es el Aprendizaje No Supervisado?,El modelo busca estructuras o grupos naturales en datos que no tienen etiquetas previas.
+¿Qué es la Clasificación?,Tarea supervisada de asignar objetos a categorías discretas (clases).
+¿Qué es la Regresión?,Tarea supervisada de predecir un valor numérico continuo.
+¿Qué es un Árbol de Decisión?,Un modelo que divide los datos jerárquicamente basándose en preguntas sobre sus atributos.
+¿Qué es un "Nodo Hoja" en un árbol de decisión?,El punto final del árbol que contiene la clasificación o predicción final.
+¿Qué es la Entropía en minería de datos?,Una medida del desorden o impureza en un conjunto de datos.
+¿Para qué sirve el algoritmo ID3 o C4.5?,Para construir árboles de decisión calculando la Ganancia de Información.
+¿Qué es el Clustering (Agrupamiento)?,Tarea no supervisada de agrupar objetos similares entre sí y diferentes a los de otros grupos.
+¿Cómo funciona el algoritmo K-means?,Asigna puntos a centros (centroides) más cercanos y actualiza los centros iterativamente hasta converger.
+¿Qué es un "Centroide"?,El punto central (promedio) de un cluster en el espacio de datos.
+¿Qué es el "Codo de Jambú" (Elbow Method)?,Técnica para determinar el número óptimo de grupos ($k$) en K-means.
+¿Qué es la Minería de Reglas de Asociación?,Descubrir relaciones "si-entonces" entre variables (ej. el análisis de la canasta de mercado).
+¿Qué es el Soporte en reglas de asociación?,La frecuencia con la que un conjunto de elementos aparece en el dataset.
+¿Qué es la Confianza en reglas de asociación?,La probabilidad de que un elemento B aparezca dado que apareció el elemento A.
+¿Qué es un Outlier (Valor Atípico)?,Un dato que se aleja significativamente del resto de las observaciones.
+Qué es el Overfitting (Sobreajuste)?,Cuando el modelo es tan complejo que "memoriza" el ruido del entrenamiento y falla con datos nuevos.
+¿Qué es el Underfitting (Subajuste)?,Cuando el modelo es demasiado simple para capturar la tendencia subyacente de los datos.
+¿Qué es una Matriz de Confusión?,Herramienta para evaluar el desempeño de un clasificador comparando valores reales vs. predichos.
+¿Qué es un Falso Positivo?,Cuando el modelo predice "Sí" pero la realidad es "No".
+¿Qué es la Precisión (Precision)?,Proporción de predicciones positivas que fueron correctas.
+¿Qué es el Recall (Sensibilidad)?,Proporción de casos positivos reales que el modelo logró identificar.
+¿Qué es la Normalización Min-Max?,Escalar los datos para que queden en un rango fijo (usualmente 0 a 1).
+¿Qué es un Almacén de Datos (Data Warehouse)?,Repositorio centralizado de datos integrados de múltiples fuentes para análisis.
+¿Qué es el OLAP?,Online Analytical Processing; procesamiento que permite consultas complejas y multidimensionales.
+¿Qué es el Cross-Validation (Validación Cruzada)?,Técnica para evaluar el modelo dividiendo los datos en $k$ partes y probando $k$ veces.
+¿Qué es el "Ruido" en los datos?,Errores aleatorios o varianza innecesaria que dificultan la extracción de patrones.
+¿Qué es el Cómputo Distribuido?,Modelo donde múltiples computadoras autónomas trabajan juntas conectadas por una red para resolver un problema.
+¿Qué es la Arquitectura Cliente-Servidor?,Modelo donde los proveedores de recursos (servidores) atienden peticiones de demandantes (clientes).
+¿Qué es un sistema de N niveles (N-Tier)?,Distribución de una aplicación en capas separadas (ej. Presentación, Lógica y Datos).
+¿Qué es el Middleware?,Capa de software que conecta aplicaciones y permite la comunicación en sistemas distribuidos.
+¿Qué es un Sistema de Archivos Distribuido (DFS)?,Permite acceder a archivos localizados en diferentes nodos como si estuvieran en un disco local.
+Menciona un ejemplo de DFS.,NFS (Network File System) o HDFS (Hadoop Distributed File System).
+¿Qué es la Escalabilidad?,Capacidad de un sistema para manejar una cantidad creciente de trabajo.
+¿Qué es la Escalabilidad Vertical (Scaling Up)?,Añadir más potencia (CPU/RAM) a un solo servidor existente.
+¿Qué es la Escalabilidad Horizontal (Scaling Out)?,Añadir más máquinas al conjunto del sistema distribuido.
+¿Qué es la Disponibilidad (Availability)?,Proporción de tiempo que un sistema está operativo y accesible.
+¿Qué es la Tolerancia a Fallos?,Capacidad de un sistema de seguir funcionando a pesar de que algunos componentes fallen.
+¿Qué es el Teorema CAP?,En un sistema distribuido solo puedes garantizar 2 de 3: Consistencia, Disponibilidad o Tolerancia a Particiones.
+¿Qué significa "Consistencia Eventual"?,Si no hay actualizaciones nuevas, eventualmente todos los accesos devolverán el último valor actualizado.
+¿Qué es el Balanceo de Carga (Load Balancing)?,Técnica para repartir el tráfico de red entre varios servidores para no saturar ninguno.
+¿Qué es la Replicación de Datos?,Mantener copias de los mismos datos en distintos nodos para mejorar disponibilidad y velocidad de lectura.
+¿Qué es la Transparencia de Red?,El usuario no percibe que los recursos están distribuidos; el sistema parece una sola entidad.
+¿Qué es un RPC (Remote Procedure Call)?,Protocolo que permite a un programa ejecutar código en otra máquina sin preocuparse por la red.
+¿Qué es el "Latencia" en sistemas distribuidos?,El tiempo que tarda un mensaje en viajar de un punto a otro en la red.
+¿Qué es un sistema Peer-to-Peer (P2P)?,Arquitectura donde cada nodo actúa como cliente y servidor al mismo tiempo.
+¿Qué es el Sharding (Fragmentación)?,Particionar una base de datos en trozos más pequeños distribuidos en diferentes servidores.
+¿Qué es la Sincronización de Relojes?,Algoritmos (como Cristian o Berkeley) para asegurar que todos los nodos tengan la misma hora.
+¿Qué es la Exclusión Mutua distribuida?,Garantizar que solo un proceso acceda a un recurso compartido en todo el sistema.
+¿Qué es un Microservicio?,Estilo arquitectónico que divide una aplicación en servicios pequeños, independientes y comunicados por red.

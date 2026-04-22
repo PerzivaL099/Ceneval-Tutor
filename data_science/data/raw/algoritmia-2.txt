@@ -1,0 +1,75 @@
+¿Qué evalúa la complejidad temporal Big-O?,El límite superior lógico del tiempo de ejecución de un algoritmo en el peor de los casos, a medida que el tamaño de los datos de entrada (N) tiende al infinito.
+¿Qué significa que un algoritmo tenga complejidad temporal O(1)?,Que su tiempo de ejecución es constante, independientemente del tamaño de los datos de entrada.
+Ordena lógicamente estas complejidades de la más rápida a la más lenta:,O(N), O(N^2), O(1), O(log N), O(N log N). A: O(1) < O(log N) < O(N) < O(N log N) < O(N^2).
+¿En qué consiste el paradigma de diseño "Divide y Vencerás"?,En dividir un problema complejo en subproblemas más pequeños del mismo tipo, resolverlos (usualmente por recursividad) y combinar sus resultados lógicos.
+Menciona dos algoritmos de ordenamiento basados en "Divide y Vencerás",Merge Sort y Quick Sort.
+¿Qué es la Programación Dinámica?,Técnica de optimización que divide problemas en subproblemas superpuestos, resolviendo cada subproblema una sola vez y almacenando su resultado lógico en memoria para futuros accesos (Memoization/Tabulation).
+¿En qué se diferencia la Programación Dinámica de "Divide y Vencerás"?,"Divide y Vencerás" asume que los subproblemas son independientes. La Programación Dinámica se usa cuando los subproblemas se repiten o se superponen.
+¿Qué es un algoritmo Avaro (Greedy)?,Un algoritmo que toma la decisión lógica que parece óptima en el momento actual (óptimo local), con la esperanza de que lleve a una solución óptima global.
+¿Cuál es la complejidad temporal de la Búsqueda Binaria (Binary Search)?,O(log N), ya que en cada iteración descarta lógicamente la mitad del espacio de búsqueda.
+¿Cuál es el requisito lógico indispensable para poder aplicar una Búsqueda Binaria?,La estructura de datos subyacente (ej. el array) debe estar previamente ordenada
+¿Qué es la recursividad?,El proceso arquitectónico donde una función se llama a sí misma dentro de su propia definición para resolver una instancia más pequeña del mismo problema.
+¿Cuáles son los dos componentes lógicos obligatorios de una función recursiva?,1) El caso base (condición de parada) 
+ 2) El paso recursivo (que acerca el problema al caso base).
+¿Qué es un algoritmo Heurístico?,Un algoritmo diseñado para encontrar una solución lógica aproximada o "suficientemente buena" cuando el problema es demasiado complejo para encontrar la solución perfecta en un tiempo razonable.
+¿Qué es un problema de clase P?,Un problema de decisión que puede ser resuelto por una máquina determinista en tiempo polinómico (es decir, de manera eficiente).
+¿Qué es un problema de clase NP?,Un problema cuyas soluciones propuestas pueden ser verificadas lógicamente como correctas o incorrectas en tiempo polinómico, pero no necesariamente descubiertas en ese tiempo.
+¿Qué caracteriza a un problema NP-Completo?,Es un problema NP al cual cualquier otro problema NP puede ser reducido o traducido en tiempo polinómico. Si resuelves uno rápidamente, los resuelves todos.
+Nombra un ejemplo clásico de un problema NP-Completo.,El Problema del Agente Viajero (TSP), Problema de la Mochila (Knapsack), o el Problema de Satisfactibilidad Booleana (SAT).
+En análisis de algoritmos, ¿qué es la "Complejidad Espacial",La cantidad lógica de memoria adicional (RAM) que necesita un algoritmo para ejecutarse, en función del tamaño de su entrada.
+¿Cuál es la diferencia entre un algoritmo In-Place y Out-of-Place?,Un In-Place transforma las estructuras de datos utilizando una cantidad mínima y constante de memoria extra. Un Out-of-Place requiere crear copias lógicas completas en memoria.
+¿Qué es el Algoritmo de Dijkstra?,Un algoritmo de grafos utilizado para encontrar lógicamente el camino más corto desde un nodo origen hacia todos los demás nodos en un grafo ponderado con pesos no negativos
+¿Cuál es la diferencia lógica entre un Array y una Lista Enlazada (Linked List)?,El Array almacena elementos en bloques de memoria físicos y contiguos (acceso O(1) por índice). La Lista Enlazada almacena nodos dispersos conectados por punteros.
+¿Bajo qué principio lógico opera una Pila (Stack)?,Principio LIFO (Last In, First Out). El último elemento en entrar es el primero en salir.
+¿Bajo qué principio lógico opera una Cola (Queue)?,Principio FIFO (First In, First Out). El primer elemento en entrar es el primero en salir.
+¿Qué es una Tabla Hash (Hash Table / Dictionary)?,Estructura que mapea lógicamente llaves a valores utilizando una función hash para calcular un índice subyacente, logrando accesos de lectura/escritura muy rápidos.
+¿Qué es una "Colisión" en una Tabla Hash y cómo se resuelve lógicamente?,Ocurre cuando dos llaves distintas generan el mismo índice. Se resuelve con "Encadenamiento" (creando una lista enlazada en ese índice) o "Sondeo Abierto" (buscando el siguiente índice vacío).
+¿Qué es un Grafo?,Estructura de datos no lineal compuesta por vértices (nodos) y aristas (conexiones lógicas entre los nodos).
+¿Qué diferencia a un Grafo Dirigido de uno No Dirigido?,En el dirigido, las aristas tienen una dirección estricta (A -> B no implica B -> A). En el no dirigido, las conexiones son bidireccionales por defecto.
+¿Qué es un Árbol Binario de Búsqueda (BST)?,Un árbol donde cada nodo tiene máximo dos hijos. Lógicamente, el subárbol izquierdo contiene valores menores al nodo padre, y el derecho valores mayores.
+Qué problema arquitectónico presenta un BST estándar?,Si los datos se insertan ya ordenados, el árbol se desbalancea y se convierte en una lista enlazada, degradando la búsqueda a O(N).
+¿Qué es un Árbol AVL?,Un árbol binario de búsqueda auto-balanceado. Lógicamente garantiza que la diferencia de altura entre los subárboles de cualquier nodo nunca sea mayor a 1, manteniendo tiempos O(log N).
+¿Qué es un Árbol B (B-Tree)?,Un árbol de búsqueda generalizado y auto-balanceado que puede tener más de dos hijos. Es el diseño arquitectónico estándar para índices en bases de datos relacionales.
+¿Qué es un Montículo Binario (Binary Heap)?,Un árbol binario completo que satisface la propiedad del montículo: el nodo padre siempre es mayor o igual (Max-Heap) o menor o igual (Min-Heap) que sus hijos.
+¿Para qué se utiliza arquitectónicamente un Min-Heap o Max-Heap?,Para implementar eficientemente Colas de Prioridad lógicas, donde siempre se requiere extraer el elemento de mayor (o menor) valor rápidamente en O(log N).
+En recorridos de árboles lógicos, ¿en qué orden se visitan los nodos en In-Order?,Subárbol Izquierdo -> Nodo Raíz -> Subárbol Derecho. (En un BST, esto devuelve los valores ordenados de menor a mayor).
+En recorridos de árboles, ¿en qué orden se visitan en Pre-Order?,Nodo Raíz -> Subárbol Izquierdo -> Subárbol Derecho.
+En recorridos de árboles, ¿en qué orden se visitan en Post-Order?,Subárbol Izquierdo -> Subárbol Derecho -> Nodo Raíz.
+¿Qué es la Búsqueda en Anchura (BFS - Breadth-First Search) en grafos?,Algoritmo que explora lógicamente el grafo por capas o niveles, alejándose uniformemente del nodo origen. Requiere una Cola (Queue) para su implementación.
+¿Qué es la Búsqueda en Profundidad (DFS - Depth-First Search) en grafos?,Algoritmo que explora lo más profundo posible a lo largo de cada rama lógica antes de retroceder (backtracking). Requiere una Pila (Stack) o recursividad.
+¿Qué es un Grafo Dirigido Acíclico (DAG)?,Un grafo dirigido que no tiene ciclos lógicos; es decir, no hay forma de empezar en un vértice y regresar a él siguiendo la dirección de las aristas.
+¿Qué estructura de datos subyacente soporta lógicamente la funcionalidad de "Deshacer" (Ctrl+Z) en el software?,Una Pila (Stack).
+¿Qué estructura soporta lógicamente el búfer de una impresora o las solicitudes de un servidor web?,Una Cola (Queue)
+¿Qué es un Árbol Trie (Árbol de Prefijos)?,Estructura de árbol especializada en recuperar cadenas lógicas de caracteres. Ideal para sistemas de autocompletado de palabras.
+Eliminar un elemento en el centro de un Array masivo es muy eficiente (O(1),Falso
+ Requiere complejidad O(N) porque debes desplazar físicamente todos los elementos siguientes para llenar el hueco.
+¿Qué es un Grafo Ponderado?,Un grafo donde cada arista tiene un peso matemático o costo numérico asignado (ej. distancias entre ciudades o latencia de red).
+¿Qué estructura de datos es la más eficiente para buscar una coincidencia exacta de un ID en memoria?,Una Tabla Hash (complejidad promedio O(1))
+Álgebra Booleana: ¿Qué establece la Ley de De Morgan?,Que la negación de una conjunción es la disyunción de sus negaciones. Lógicamente: NOT (A AND B) = (NOT A) OR (NOT B).
+¿Cuál es el resultado de la proposición "P IMPLICA Q" (P -> Q) si P es Falso y Q es Falso?,Verdadero
+Lógicamente, una implicación solo es falsa si el antecedente (P) es verdadero y el consecuente (Q) es falso.
+¿Cuál es el comportamiento de XOR (OR Exclusivo)?,Devuelve 1 (Verdadero) únicamente si los dos bits comparados son diferentes. Si son iguales, devuelve 0.
+¿Qué significa que una función sea Inyectiva (Uno a Uno)?,Cada elemento del dominio lógico se mapea a un elemento único y distinto en el codominio. Dos entradas distintas no pueden generar la misma salida.
+¿Qué es la Intersección (A ∩ B)?,El conjunto lógico que contiene a los elementos que pertenecen tanto al conjunto A como al conjunto B simultáneamente.
+¿Qué es el Conjunto Potencia?,El conjunto formado por absolutamente todos los subconjuntos lógicos posibles de un conjunto dado, incluyendo el conjunto vacío.
+Aplica la Ley de Identidad a A OR Falso.,El resultado es lógicamente A.
+En un grafo, ¿qué es un Circuito Euleriano?,Un camino lógico cerrado que recorre cada arista del grafo exactamente una sola vez, y termina en el nodo inicial.
+En un grafo, ¿qué es un Ciclo Hamiltoniano?,Un camino lógico cerrado que visita cada vértice (nodo) del grafo exactamente una sola vez, volviendo al vértice de inicio.
+¿Qué efecto matemático tiene hacer un desplazamiento de bits a la izquierda (Left Shift <<) de una posición en un entero?,Equivale lógicamente a multiplicar el número por 2.
+Diseñas el sistema de un GPS y necesitas garantizar encontrar la ruta más corta en kilómetros entre un punto A y un B. ¿Qué algoritmo implementas?,Algoritmo de Dijkstra o A* (A-Star).
+Estás modelando las tareas de compilación (ej. Makefiles), donde la librería 'X' debe compilarse antes que la aplicación 'Y'. ¿Qué estructura y algoritmo aplicas?,Modelarlo en un Grafo Dirigido Acíclico (DAG) y aplicarle un Ordenamiento Topológico.
+Tienes un array de 5 millones de registros de usuarios, y está garantizado que los IDs están ordenados. Necesitas buscar el usuario ID 4000,¿Qué algoritmo utilizas para no colapsar la memoria? A: Búsqueda Binaria (O(log N))
+Necesitas almacenar y acceder frecuentemente al saldo de cuentas de usuarios por su "Alias" (una cadena de texto), y la velocidad es el único requerimiento crítico. ¿Qué estructura seleccionas?,Tabla Hash (Hash Map/Dictionary).
+Quieres encontrar el camino más corto para salir de un laberinto en una matriz 2D, contando el número de pasos lógicos. ¿Eliges DFS o BFS?,BFS (Búsqueda en Anchura), porque al avanzar radialmente por niveles garantiza el camino más corto en estructuras no ponderadas.
+El lenguaje en el que trabajas usa un Stack en memoria para rastrear llamadas a funciones. Una función entra en un ciclo infinito de recursividad y el programa explota. ¿Cómo se llama esta falla lógica?,Stack Overflow (Desbordamiento de pila).
+Para un conjunto de datos pequeño (ej. 20 elementos), Quick Sort siempre derrotará arquitectónicamente a Insertion Sort en velocidad,Falso
+Para conjuntos muy pequeños, la sobrecarga lógica de la recursividad en Quick Sort lo hace más lento que algoritmos simples como Insertion Sort.
+Estás diseñando un juego de ajedrez. El motor de la IA necesita evaluar los próximos movimientos posibles, y luego los movimientos posibles a partir de esos. ¿Qué estructura de datos estás armando lógicamente?,Un Árbol n-ario (Árbol de Juegos o Decisiones).
+Una matriz de adyacencia consume menos memoria que una lista de adyacencia para representar un grafo muy disperso (pocos vértices conectados entre sí),Falso
+Una matriz de adyacencia de tamaño V * V desperdiciará memoria con ceros lógicos, mientras que la lista solo guarda las conexiones reales.
+Diseñas un enrutador de red. Cuando recibe paquetes los manda uno por uno al canal de salida en el orden que llegaron. Si la red se congestiona, guarda los paquetes en memoria. ¿Qué estructura estás utilizando?,Cola (Queue / FIFO)
+Al programar el cálculo de la serie de Fibonacci, si usas recursividad pura tardará años en un número grande por repetir el cálculo de las mismas ramas. ¿Cómo optimizas esta lógica de negocio?,Usando Programación Dinámica (Memoization) para guardar en un diccionario los números de Fibonacci ya calculados y devolverlos en tiempo O(1).
+Una expresión matemática se recibe en notación postfija (ej. 3 4 + 2 *). ¿Cuál es la estructura ideal para evaluar el resultado lógicamente mientras se lee el string?,Una Pila (Stack)
+En subnetting, si aplicas un operador AND a nivel de bits entre la Dirección IP y la Máscara de Subred, ¿qué dato lógico extraes?,La Dirección de Red (Network ID)
+Diseñas el recolector de basura (Garbage Collector) de un entorno de ejecución. Para saber qué objetos de memoria ya no están en uso, partes desde las variables globales locales y exploras las referencias. ¿Qué algoritmo aplicas a los objetos?,Una Búsqueda en Profundidad (DFS) sobre el grafo de referencias de los objetos en memoria
+En diseño de software, un algoritmo que tarda O(N!) (Factorial) es escalable y seguro de implementar en un backend asíncrono,Falso. O(N!) es la complejidad lógica más ineficiente. Con una N minúscula (ej. N=20) destruiría completamente el rendimiento del sistema o causaría un bloqueo masivo.

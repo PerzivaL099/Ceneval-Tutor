@@ -1,0 +1,115 @@
+¿Qué es una bdd?,Están diseñadas para permitir la recuperación, inserción y actualización eficiente de los datos.
+Características de bdd,Integridad de Datos, Acceso Concurrente, Independencia de Datos
+Que es Integridad de Datos?,Las bdd mantienen laprecisión y consistencia de los datos através de restricciones y reglas deintegridad.
+Que es Acceso Concurrente?,Permiten que múltiples usuarios accedan y manipulen los datos simultáneamente sin conflictos.
+Que es Independencia de Datos?,Separan los datos de las aplicaciones que los usan, permitiendo cambios en la estructurade la bdd sin afectar las aplicaciones existentes
+Modelo ER:,Herramienta para modelar los datos y susrelaciones en una bdd. Se indican las tablas ,atributos y sus relaciones.
+Componentes del ER,Entidades (tablas), Atributos(campos) Y Relaciones
+Entidades (tablas):,Almacenan información y representan objetos del mundo real. Ej.:cliente o producto.
+Atributos(campos):,Propiedades o características de las entidades. Ej.: el nombre y la dirección de un cliente.
+Relaciones:,Asociaciones entre dos o más entidades. Ej.: un cliente realiza un pedido
+Reglas de integridad en el modelo relacional,Integridad de Entidad, Integridad Referencial y Integridad de Dominio
+Normalización y sus objetivos,Eliminar datos redundantes, Asegurar la integridad de datos y Mejorar la eficiencia de consultas
+Dependencias funcionales,relaciones entre atributos en una bdd donde un atributo determina otro atributo A--->B
+Primera Forma Normal (1NF):,Los valores de los atributos deben ser atómicos
+Segunda Forma Normal (2NF):,todos los atributos no clave deben depender completamente de la llave primaria.
+Tercera Forma Normal (3NF),no debe haber dependencias transitivas (un atributo no clave depende de otro atributono clave).
+DDL (Data Definition Language):,Definir y modificar la estructura de las bases de datos (CREATE, ALTER, DROP).
+DML (Data Manipulation Language):,Consultar y modificar datos (SELECT,INSERT, UPDATE, DELETE).
+DCL (Data Control Language):,Controlar el acceso a los datos (GRANT,REVOKE)
+TCL (Transaction Control Language):,Controlar las transacciones (COMMIT,ROLLBACK)
+Dependencias funcionales (DF),Una DF se da cuando la información en una columna depende de la información en otra columna. 1:1
+Forma Normal de Boyce-Codd(BCNF),ciertas anomalías que aún podían surgir en 3NF cuando un esquema tiene dependencias funcionales más complejas.
+Condicion de que este en BCNF,lado izquierdo de la dependencia (el determinante) es una clave candidata (una clave única que podría actuar como la clave primaria).
+Cuarta Forma Normal (4NF):,Se enfoca eneliminar dependencias multivalor (tabla puede tener múltiples valores independientes de otro atributo)
+Quinta Forma Normal (5NF) O proyección-join(PJNF),descomponer tablas parae liminar dependencias de join innecesarias
+Similitud de 1NF Y 4NF,1NF asegura que los datos son indivisibles y 4NF se enfoca en eliminar dependencias multivaluadas
+Cliente,Una aplicación o dispositivo que solicita servicios o recursos de otro programa o dispositivo.
+Servidor,programa o dispositivo que proporciona servicios o recursos a los clientes en respuesta a sus solicitudes.
+Arquitectura Cliente/Servidor,Disposición o proporción en que se hallan los elementos, forma en que esta ordenada.
+Sistemas,modelo red en el que múltiples clientes se conectan a un servidor centralizado que proporciona recursos o servicios
+Comunicación Cliente/Servido,Intercambio de datos entre C/S. Utiliza protocolos de comunicación estándar (ej. HTTP,FTP, TCP/IP)
+Ejemplos de Cliente/Servidor,Navegadores web, Clientes de correo electrónico y Aplicaciones de bases de datos
+Proposito de un cliente,Solicita recursos o servicios
+Proposito de servidor,Proporciona recursos o servicios.
+Iniciativa de Cliente,Usualmente la inicia comunicacion con servidor.
+Iniciativa de servidor,Esperar solicitudes de los clientes.
+Recursos del cliente,recursos limitados y realiza tareas específicas
+Recursos del servidor,capacidad de procesamiento, memoria, almacenamiento) y puede manejar múltiples solicitudes simultáneamente.
+Ejemplo de cliente,Navegador web, aplicación de correo electrónico y aplicación móvil
+Ejemplo de Servidor,Servidor web, servidor de correo y servidor de base de datos
+Tipo de cliente,Livianos, Pesados y Moviles
+Que es un cliente liviano?,tareas básicas y dependen en gran medida de los servidores para el procesamiento. Ejemplos: Navegadores web, clientes de correo.
+Que es un cliente pesado?,parte considerable del procesamiento de datos y requieren menos interacción con el servidor. Ejemplos: Aplicaciones de escritorio, juegos en línea con procesamiento local.
+Que es un cliente Movil?,funcionar en dispositivos móviles con recursos limitados. Ejemplos: Aplicaciones móviles, navegadores móviles.
+Que es un servidor web?,Almacena, procesa y entrega paginas web a los clientes (https)
+Que es un servidor de BDD?,Gestiona bases de datos y responde a consultas.(MySQL,ORACLE)
+Que es un servidor de correo?,Gestiona,envio,recepcio y almacen de correos.(microsoft,postfix,sendmail)
+Que es un servidor de archivos?,Almacena y gestiona acceso a archivos y docs. (FTP Server, Samba)
+Que es un servidor de aplicaciones?,Ejecuta paginas empresariales y gestiona logistica.(JBOSS,WebSphere,Apache)
+Arquitectura 2-tier,Dos partes: cliente y servidor. Cliente maneja presentacion y logica. Servidor gestion de bdd y operacion de datos.
+2-Tier Cliente(Componentes),Interfaz,Procesamiento logico. (app de escritorio,app web)
+2-Tier Servidor(Componentes),Gestion de bdd ( Consultas en SQL Server y Oracle)
+Ventajas de 2-Tier,Simplicidad y Menos complejidad de diseño
+Desventajas de 2-Tier,Menos escalabilidad y seguridad limitada
+Ejemplo de 2-Tier,App bancaria: cliente usa app de escritorio y consulta directamente la bdd a traves del server.
+Arquitectura 3-Tier,Cliente,Logica de negocios y capa de servidor
+Cliente en 3-Tier,Presentacion e interfaz de usuario (Navegador web y app movil)
+Logica de Negocio en 3-Tier,Logica de aplicacion,regla de negocio y transaccion. (Apache Tomcat, Microsoft IIS)
+Capa de SBD en 3-Tier,Almacena y gestiona acceso a los datos (MySQL,Oracle)
+Ventajas de 3-Tier,Mayor escalabilidad y flexibilidad, mejor seguridad en bdd. Mantener y actualizar aplicaciones.
+Desventajas de 3-Tier,Mas complejas en implementacion y requiere mas recursos y gestion de capas.
+Ejemplo de 3-Tier,Amazon. Cliente--> usa aplicacion web, logica de negocios--> procesar servidor de aplicacion y gestion de datos-->en un server separado.
+Usuario final en un bdd,buscan satisfacer necesidades de informacion
+Usuario ingenuo,Accede a bdd a traves de apps, sin interactuar con el DBMS
+Usuario sofisticado,Conocen EBD y usan consultas como SQL
+Desarollador de Aplicacion,Responsable de crear programa que dejen a usuarios interactuar con los datos.
+Diseñador logico,define entidades,atributos y restricciones de datos
+Diseñador fisico,implementa diseño logico en el sistema fisico. da seguridad y rendimiento, usa estructuras de almacenamiento
+Administrador de Datos(DA),Hace estandares,politicas. Planificacion y gestion de datos. Diseño logico del bdd
+(DA) Estandares,Nombres de Campos y Tablas, Formato de Datos y Estandar de Codificacion
+(DA) Politicas,Privacidad de datos, Calidad de datos y Retencion de datos
+¿Qué significa que X sea una superclave?,cualquier conjunto de atributos que puede identificar de forma única una tupla en una relación.
+¿Cuál es el objetivo principal de la normalización en las bases de datos relacionales?,Eliminar la redundancia de datos y minimizar las anomalías de actualización
+¿Qué es la dependencia funcional en una base de datos relacional?,Cuando el valor de un atributo determina el valor de otro atributo
+Anomalía de inserción,
+Anomalia de eliminacion,
+Anomalia de actualizacion,Son problemas que ocurren cuando los cambios en los datos generan resultados inconsistentes o indeseables
+Anomalia de incosistencia,
+¿Cuál de las siguientes opciones es un beneficio de la normalización en las bases de datos?,Mejora en la eficiencia del almacenamiento de datos
+¿Cuál de las siguientes opciones describe mejor las anomalías de actualización en las bases de datos?,Son problemas que ocurren cuando los cambios en los datos generan resultados inconsistentes o indeseables
+¿Cuál es el objetivo principal de la normalización en las bases de datos relacionales?,Eliminar la redundancia de datos y minimizar las anomalías de actualización
+¿Cuál es el objetivo principal de la quinta forma normal (5NF) en las bases de datos relacionales?,Eliminar la redundancia de datos en esquemas de unión
+¿Cuál es una característica esencial de una base de datos normalizada?,La ausencia de datos redundantes
+¿Cuál es el objetivo principal de la primera forma normal en las bases de datos relacionales?,Evitar la duplicación de datos en una tabla
+La segunda forma normal elimina la redundancia de datos en una tabla.,falso
+¿Cuál de las siguientes es una característica de una relación en Quinta Forma Normal (5NF)?,Está libre de dependencias de unión no triviales.
+¿Cuál es el objetivo principal de la tercera forma normal en las bases de datos relacionales?
+Show answer choices,Eliminar la dependencia transitiva de los atributos de una tabla
+¿Cuál es el objetivo principal de la segunda forma normal en las bases de datos relacionales?,Eliminar la dependencia parcial de los atributos de una tabla
+Beneficio de normalizacion de bdd,Mejora en la eficiencia del almacenamiento de datos
+¿Cuál es una característica esencial de una base de datos en la cuarta forma normal (4NF)?,Eliminación de dependencias multivaluadas
+¿Cuál es el objetivo principal de la primera forma normal en las bases de datos relacionales?,Evitar la duplicación de datos en una tabla
+¿Qué consideraciones se deben tener en cuenta al diseñar la organización de archivos e índices durante el diseño físico?,Analizar las transacciones para identificar aquellas con mayor impacto en rendimiento, y seleccionar la organización de archivos e índices óptimos
+Tabla de Productos y una tabla de Ventas, cada una en 3NF. Las consultas que más se realizan implican unir ambas tablas para obtener la cantidad vendida por producto en un período de tiempo determinado. ¿Qué estrategia de desnormalización sería la más apropiada para mejorar la eficiencia de estas consulta,Crear una vista materializada que combine los datos de Productos y Ventas.
+¿Cuál es la diferencia principal entre entidades fuertes y entidades débiles?,Las entidades fuertes tienen una clave primaria independiente, mientras que las entidades débiles dependen de una entidad fuerte para su identificación
+Una empresa de logística tiene una tabla Envios que está en 3NF. Para cada envío, necesitan consultar constantemente el costo total basado en la distancia, peso y tarifas aplicables. La tabla Envios se consulta con mucha frecuencia, pero se actualiza raramente. ¿Qué acción de desnormalización podría mejorar la eficiencia de estas consultas?,Agregar una columna de CostoTotal en la tabla Envios, calculada y actualizada al momento de insertar o modificar un registro.
+¿Cuáles son las tres fases principales del diseño de una base de datos?,Diseño conceptual, diseño lógico, diseño físico
+¿Qué es la desnormalización y cuándo se debería aplicar?,Es el proceso de reducir el nivel de normalización para mejorar la eficiencia en consultas, aplicándose cuando una relación tiene una baja tasa de actualización y alta tasa de consulta
+¿Por qué es importante la revisión del modelo de datos con los usuarios en cada fase del diseño?,Para asegurar que el modelo de datos cumple con los requisitos empresariales y permite ajustes antes de avanzar a la siguiente fase
+La desnormalización puede aumentar el tamaño de las relaciones y hacer que las actualizaciones sean más lentas,True
+Al diseñar un diagrama ER para una biblioteca, decides que cada libro puede ser prestado a varios usuarios, y cada usuario puede tomar prestados varios libros. ¿Qué tipo de relación debería existir entre las entidades Libro y Usuario?,Muchos a muchos
+¿Cómo se asegura la integridad de los datos durante el diseño lógico?,Mediante la normalización de relaciones, validación de transacciones de usuario, y aplicación de restricciones de integridad
+Cuál de las siguientes opciones describe correctamente una clave primaria en una tabla relacional?,Un campo o conjunto de campos que identifica de manera única cada registro en una tabla.
+¿Cuál de las siguientes opciones describe correctamente la Segunda Forma Normal (2NF)?,Una tabla está en 2NF si está en 1NF y todos los atributos que no son clave dependen funcionalmente de toda la clave primaria.
+Dada la tabla Empleado con los siguientes atributos: ID_Empleado, Nombre, Apellido, Departamento, Sueldo. ¿Cuál de los siguientes comandos SQL crearía esta tabla en un sistema de gestión de bases de datos (SGBD)? a) CREATE TABLE Empleado (ID_Empleado INT PRIMARY KEY, Nombre VARCHAR(50), Apellido VARCHAR(50), Departamento VARCHAR(50), Sueldo FLOAT);,CREATE TABLE Empleado (ID_Empleado INT PRIMARY KEY, Nombre VARCHAR(50), Apellido VARCHAR(50), Departamento VARCHAR(50), Sueldo FLOAT);
+El objetivo principal del diseño físico de una base de datos es asegurar que los datos se almacenen y se accedan de manera eficiente,True
+Relacion de uno a muchos,Un departamento tiene muchos empleados, y cada empleado pertenece a un solo departamento.
+¿Qué implica el diseño conceptual de una base de datos?,La construcción de un modelo de datos que refleja los requisitos de la empresa, sin considerar aspectos técnicos
+¿Qué es la dependencia funcional en una base de datos relacional?,Cuando el valor de un atributo determina el valor de otro atributo
+¿Cuál es el objetivo principal de la segunda forma normal en las bases de datos relacionales?,Eliminar la dependencia parcial de los atributos de una tabla
+¿Cuál de las siguientes afirmaciones es verdadera sobre la Forma Normal de Boyce-Codd (BCNF)?,Una relación está en BCNF si y solo si, para cada dependencia funcional X → Y, X es una superclave.
+¿Cuál de las siguientes opciones es una característica de la normalización en bases de datos relacionales?,Preservar la integridad de los datos a través de restricciones de integridad
+¿Cuál es el objetivo principal de la tercera forma normal en las bases de datos relacionales?,Eliminar la dependencia transitiva de los atributos de una tabla
+¿Cuál es el objetivo principal de la normalización en las bases de datos relacionales?,Eliminar la redundancia de datos y minimizar las anomalías de actualización
+¿Qué es la dependencia funcional en una base de datos relacional?,Cuando el valor de un atributo determina el valor de otro atributo

@@ -1,0 +1,93 @@
+Complejidad Temporal,Medida de cuánto tiempo tarda un algoritmo en función del tamaño de entrada
+Complejidad Espacial,Cantidad de memoria extra que usa un algoritmo
+Busqueda Binaria,Cantidad de memoria extra que usa un algoritmo
+Busqueda Binaria Ejemplo Practico,Divide un arreglo ordenado a la mitad sucesivamente. Caso práctico: Buscar el "42" en una lista de 1 a 100. Resolución: Comparar con 50 (es menor), luego con 25 (es mayor)... máximo 7 intentos
+Busqueda Secuencial,Revisa uno por uno. Peor caso (N).
+Bubble Sort,Intercambia elementos adyacentes si estan en desorden.
+Muy Ineficiente (N^2)
+QuickSort,Usa un pivote para dividir el arreglo
+Caso practico: Elegir el ultimo elemento como pivote y mover menores a la izquierda y mayores a la derecha.
+MergeSort,Divide el arreglo hasta que cada elemento es una lista de tamaño 1 y luego los combina ordenados.
+Siempre es (NLOGN)
+Algoritmos Avidos (Greedy),Elige la opcion optima local en cada paso esperando hallar el optimo global
+Programacion Dinamica,Divide un problema en subproblemas y guarda los resultados (memorizacion) para no recalcular.
+Fibonnaci optimizado.
+Notacion Big Omega,Representa el limite inferior (mejor caso).
+Notacion Big Theta,El algoritmo esta actoado tanto por arriba como por abajo.
+Algoritmo de Dijjkstra,Halla el camino mas corto en un grafo con pesos positivos
+Backtracking,Prueba todas las combinaciones posibles y retrocede cuando uan no cumple la condicion.
+Estabilidad en Ordenamiento,Es estable si mantiene el orden relativo de elementos con llaves iguales
+Arreglos (Arrays),Coleccion indexada de tamano fijo.
+Lista Ligada Simple,Nodos donde cada uno apunta al siguiente.
+Lista Doblemente Ligada,Cada nodo apunta al anterior y al siguiente. 
+Recorrido bidireccional.
+Pila (Stack),Modelo LIFO (Last in, First Out).
+Operacion push y pop.
+Cola (QUEUE),Modelo FIFO (First In, First Out)
+Operaciones enqueue y dequeue
+Cola de Prioridad,los elementos con mayor prioridad salen antes que los de menor prioridad.
+Sin importar el orden de llegada.
+Arbol Binario,Cada nodo tiene maximo 2 hijos
+Arbol Binario de Busqueda (BST),Izquierda < Raíz < Derecha
+Caso práctico: Si insertas 10, 5, 15; el 5 va a la izquierda del 10 y el 15 a la derecha
+Arbol AVL,Un BST que se balancea automaticamente mediante rotaciones para que la diferencia de alturas entre subarboles sea maximo 1.
+Grafo,Conjunto de vertices(nodos) y aristas (conexiones)
+Matriz de Adyacencia,Representacion de grafos mediante una tabla de N Times N
+Lista de Adyacencia,Representacion de grafos donde cada nodo guarda una lista de sus vecinos.
+Mas eficiente en espacio para grafos "esparciados".
+Tabla Hash (Hash Map),Almacena pares claves-valor.
+Caso práctico: Usar una función hash para convertir "Nombre" en el índice 4 de un arreglo. Acceso casi siempre O(1)
+Colision en Hash,Cuando dos claves distintas dan el mismo indice.
+Se resuelve con encadenamiento o direccionamiento abierto.
+Heap (Monticulo),Arbol binario especial donde el padre siempre es mayor (Max-Heap) o menor (Min-Heap) que los hijos. 
+Usado en Heapsort.
+Conjuntos,Coleccion de objetos Unicos
+Union,Elementos que estan en A, en B o en ambos
+Interseccion,Elementos que estan en ambos simultaneamente
+Diferencia,Elementos en A que NO estan en B
+Producto Cartesiano,Todas las parejas posibles de dos conjuntos
+Relaciones,Subconjunto del producto cartesiano. 
+Puede ser reflexiva, simetrica o transitiva.
+Funcion Inyectivas,A cada elemento del codominio le corresponde maximo uno del dominio
+Teoria de Grafos (Grado),Numero de aristas conectadas a un vertice
+Grafo Conexo,Existe un camino entre cualquier par de vertices
+Permutaciones vs Combinaciones,En las permutaciones el orden importa(contrasenas) y en las combinaciones no (ensalada de frutas)
+Proposicion,Enunciado que puede ser Verdadero o Falso
+Conjuncion (AND),Solo es verdadera si ambas son verdaderas
+Disyuncion (OR),Es verdadera si al menos una es verdadera (F/V =V)
+Negacion (NOT),Invierte el valor de verdad
+Condicional,"Si P entonces Q"
+Solo es falsa si el antecedente es verdadero y el consecuente falso
+Bicondicional,Verdadero si ambos tienen el mismo valor
+Tautologia,Expresion que siempre es verdadera independientemente de las variables.
+Contradiccion,Expresion que siempre es falsa.
+Leyes de Morgan,$\neg(P \land Q)$ es equivalente a $\neg P \lor \neg Q$.
+Algebra de Boole,Uso de identidades para reducir circuitos lógicos. 
+Caso práctico: Simplificar $A \cdot (A + B)$. 
+Resolución: Por ley de absorción, el resultado es simplemente $A$.
+Búsqueda Binaria (Eficiencia Máxima),Concepto: Solo funciona en arreglos ordenados. Divide el problema a la mitad en cada paso.
+
+Caso Práctico: Tienes un arreglo de 64 elementos ordenados. ¿Cuántas comparaciones haces como máximo para encontrar un número?
+Resolución: Aplicamos el logaritmo base 2 del número de elementos ($\log_2 n$).
+$2^6 = 64$.
+Resultado: Máximo 6 comparaciones.
+Árboles Binarios de Búsqueda (BST),Concepto: Izquierda menor, Derecha mayor.
+
+Caso Práctico: Se insertan los valores [15, 10, 20, 8, 12] en un BST vacío. ¿Cuál es el orden de los nodos?
+
+Resolución:
+15 es la raíz.
+10 es menor que 15 $\rightarrow$ Hijo izquierdo.
+20 es mayor que 15 $\rightarrow$ Hijo derecho.
+8 es menor que 15 y menor que 10 $\rightarrow$ Hijo izquierdo de 10.
+12 es menor que 15 y mayor que 10 $\rightarrow$ Hijo derecho de 10.
+Lógica: Simplificación con Leyes de De Morgan,Concepto: $\neg(P \land Q) \equiv \neg P \lor \neg Q$ y $\neg(P \lor Q) \equiv \neg P \land \neg Q$.
+Pilas vs Colas,LIFO (Pila) vs FIFO (Cola)
+
+Caso Práctico: Se realizan las siguientes operaciones en una Pila vacía: Push(A), Push(B), Pop(), Push(C). ¿Qué elemento queda al tope?
+
+Resolución: 1. Push(A) $\rightarrow$ [A] 
+2. Push(B) $\rightarrow$ [A, B] 
+3. Pop() (sale B porque fue el último en entrar) $\rightarrow$ [A] 
+4. Push(C) $\rightarrow$ [A, C]
+Resultado: El elemento al tope es C.
