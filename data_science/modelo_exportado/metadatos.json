@@ -1,0 +1,12 @@
+{
+  "model_name": "dccuchile/bert-base-spanish-wwm-uncased",
+  "num_clases": 4,
+  "max_length": 128,
+  "arquitectura": "BERT_CNN",
+  "mapa_etiquetas": {
+    "0": "Algoritmia y Estructuras de Datos",
+    "1": "Arquitectura de Computadoras y Sistemas",
+    "2": "Ingeniería de Software, Bases de Datos y Ciberseguridad",
+    "3": "Computación Inteligente y Sistemas Distribuidos"
+  }
+}
