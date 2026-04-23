@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import ExamPage from './pages/ExamPage/ExamPage';
 import ResultsPage from './pages/ResultsPage/ResultsPage';
+import ClasificadorPage from './pages/ClasificadorPage/ClasificadorPage';
 
 // Protected Route wrapper
 function ProtectedRoute({ children }) {
@@ -74,6 +75,7 @@ function AppRoutes() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/exam" element={<ExamPage />} />
         <Route path="/results" element={<ResultsPage />} />
+        <Route path="/clasificador" element={<ClasificadorPage />} />
       </Route>
 
       {/* Default redirect */}

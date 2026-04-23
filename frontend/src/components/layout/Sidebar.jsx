@@ -6,6 +6,7 @@ const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/exam', label: 'Simulacro Exam', icon: '⚡' },
     { path: '/results', label: 'Mis Resultados', icon: '📈' },
+    { path: '/clasificador', label: 'Clasificador IA', icon: '🧠' },
 ];
 
 export default function Sidebar() {
