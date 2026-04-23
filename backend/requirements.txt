@@ -17,3 +17,8 @@ joblib==1.3.2
 passlib[bcrypt]
 bcrypt==3.2.0
 python-jose[cryptography]
+
+# Motor NLP — BERT_CNN
+torch==2.2.0
+transformers==4.38.0
+ 
