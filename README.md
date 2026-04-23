@@ -1,65 +1,70 @@
 # Tutor CENEVAL — Plataforma de Diagnóstico con IA
 
-Este proyecto es una plataforma web completa (Backend + Frontend) que funciona como un Tutor Inteligente diseñado para diagnosticar y predecir la probabilidad de éxito de estudiantes universitarios en el examen CENEVAL, utilizando un modelo de Machine Learning entrenado con Random Forest.
+Este proyecto es una plataforma web completa (Backend + Frontend) que ha transitado de un sistema de evaluación estático basado en Random Forest hacia un verdadero Sistema Tutor Inteligente (ITS). Está diseñado para diagnosticar y preparar a estudiantes universitarios para el examen EGEL-C en Ingeniería en Ciencias Computacionales, utilizando un modelo de diagnóstico (Random Forest) y un nuevo Motor Semántico de Deep Learning (BERT-CNN) para la clasificación automática de temas.
 
 ## Arquitectura del Sistema
 
-El proyecto sigue una arquitectura cliente-servidor, separando el frontend y el backend en servicios independientes que se comunican mediante una API REST con peticiones en formato JSON.
+El proyecto sigue una arquitectura cliente-servidor, separando el frontend y el backend en servicios independientes que se comunican mediante una API REST. La integración del modelo de lenguaje permite inferencia local sin depender de llamadas externas.
 
-* **Frontend:** React 19 + Vite 7 (puerto 5173)
-* **Backend / API:** FastAPI — Python 3.10 (puerto 8000)
-* **Base de Datos:** PostgreSQL (puerto 5432)
-* **ORM:** SQLAlchemy (con validación de esquemas vía Pydantic)
-* **Motor de IA:** Scikit-Learn y XGBoost (Random Forest v2)
-* **Infraestructura:** Docker y Docker Compose
-* **Seguridad:** JWT (JSON Web Tokens) y hashing de contraseñas con passlib (bcrypt)
-* **Comunicación:** CORS habilitado para permitir la interacción entre frontend y backend en puertos distintos
+* **Frontend:** React + Vite (SPA, React Router v6) con un tema dark personalizado.
+* **Backend / API:** FastAPI — Python 3.x, Uvicorn.
+* **Base de Datos:** PostgreSQL (SQLAlchemy ORM).
+* **Motor de IA Diagnóstico:** Scikit-Learn y XGBoost (Random Forest v2).
+* **Motor de IA Semántico (Deep Learning):** PyTorch y Hugging Face Transformers (AutoTokenizer + AutoModel).
+* **Infraestructura:** Docker Compose (Contenedores backend + BD).
+* **Entrenamiento ML:** Cómputo ejecutado en Google Colab con GPU NVIDIA T4.
+
+## Motor Semántico NLP (Fase 5)
+
+La plataforma integra un motor de Deep Learning basado en la arquitectura **BERT-CNN**, seleccionado por su alta capacidad de generalización. Su función es clasificar automáticamente cualquier pregunta ingresada por el estudiante en una de las cuatro áreas temáticas del EGEL-C:
+
+* **Clase 0:** Algoritmia y Estructuras de Datos.
+* **Clase 1:** Arquitectura de Computadoras y Sistemas.
+* **Clase 2:** Ingeniería de Software, Bases de Datos y Ciberseguridad.
+* **Clase 3:** Computación Inteligente y Sistemas Distribuidos.
+
+**Características del Modelo:**
+* **Backbone:** Utiliza el tokenizador y modelo base `dccuchile/bert-base-spanish-wwm-uncased` (BETO).
+* **Rendimiento:** El modelo alcanzó un F1-Score Macro de **0.78** en el conjunto de prueba.
+* **Regla de Negocio (Fuera de Dominio):** El sistema exige un umbral de confianza mínimo del 60% para clasificar una pregunta como válida. Por debajo de este valor, la API retorna de manera segura `fuera_de_dominio: true`.
 
 ## Estructura del Proyecto
 
-```
+```text
 Ceneval-Tutor/
 │
 ├── backend/                   # API HTTP y lógica de negocio
 │   ├── app/
 │   │   ├── core/              # Configuración y seguridad (JWT, hashing)
-│   │   ├── ml/                # Modelos de ML exportados (.pkl)
+│   │   ├── ml/                # Modelos clásicos de ML exportados (.pkl)
 │   │   ├── models/            # Modelos de BD relacional (SQLAlchemy)
 │   │   ├── schemas/           # Contratos de datos y validación (Pydantic)
-│   │   ├── services/          # Lógica central (usuarios, exámenes, diagnóstico)
-│   │   ├── api/               # Dependencias de inyección (auth, DB sessions)
+│   │   ├── services/          # Lógica central (usuarios, NLP, diagnóstico)
+│   │   ├── api/               # Dependencias de inyección
 │   │   ├── database.py        # Configuración de conexión a PostgreSQL
 │   │   └── main.py            # Punto de entrada de la API (FastAPI)
-│   ├── scripts/               # Scripts de automatización
-│   │   └── data/              # Banco de preguntas CENEVAL (JSON)
 │   ├── Dockerfile             # Imagen Docker del backend
 │   └── requirements.txt       # Dependencias de Python
 │
 ├── frontend/                  # Interfaz de usuario (React)
 │   ├── src/
-│   │   ├── components/layout/ # Componentes de layout (Sidebar, TopBar, AppShell)
-│   │   ├── context/           # Estado global de autenticación (AuthContext)
-│   │   ├── pages/
-│   │   │   ├── LoginPage/     # Página de login y registro
-│   │   │   ├── DashboardPage/ # Panel principal con métricas e insights
-│   │   │   ├── ExamPage/      # Examen diagnóstico con tracking automático
-│   │   │   └── ResultsPage/   # Resultados con predicción de IA
-│   │   ├── services/          # Capa de comunicación con la API (api.js)
-│   │   ├── App.jsx            # Rutas y navegación
-│   │   ├── main.jsx           # Punto de entrada de React
-│   │   └── index.css          # Sistema de diseño global (tema oscuro)
-│   ├── index.html             # HTML base
+│   │   ├── components/layout/ # Componentes de layout (Sidebar, TopBar)
+│   │   ├── pages/             # Vistas principales (Dashboard, Clasificador IA, etc.)
+│   │   ├── services/          # Capa de comunicación HTTP con la API
+│   │   └── App.jsx            # Rutas y navegación
 │   └── package.json           # Dependencias de Node.js
 │
 ├── data_science/              # Laboratorio de IA y análisis de datos
-│   ├── data/                  # Conjuntos de datos simulados
-│   ├── models/                # Modelos entrenados almacenados
+│   ├── data/                  # Conjuntos de datos simulados y aumentados
+│   ├── modelo_exportado/      # Artefactos del modelo BERT-CNN serializados
+│   │   ├── pesos_bert_cnn.pt  # Pesos fine-tuneados (state_dict de PyTorch)
+│   │   ├── tokenizador/       # Directorio con el tokenizador BETO
+│   │   └── metadatos.json     # Mapa de etiquetas y configuración
 │   └── src/                   # Scripts de entrenamiento y evaluación
 │
 ├── docker-compose.yml         # Orquestación de servicios (DB + API)
 ├── .env                       # Variables de entorno (DB, JWT)
 └── README.md
-```
 
 ## Prerrequisitos
 
