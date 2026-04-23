@@ -20,5 +20,5 @@ python-jose[cryptography]
 
 # Motor NLP — BERT_CNN
 torch==2.2.0
-transformers==4.38.0
+transformers==5.0.0rc3
  
