@@ -28,6 +28,42 @@ La plataforma integra un motor de Deep Learning basado en la arquitectura **BERT
 * **Rendimiento:** El modelo alcanzó un F1-Score Macro de **0.78** en el conjunto de prueba.
 * **Regla de Negocio (Fuera de Dominio):** El sistema exige un umbral de confianza mínimo del 60% para clasificar una pregunta como válida. Por debajo de este valor, la API retorna de manera segura `fuera_de_dominio: true`.
 
+Estimado profesor,
+
+Debido a las mejores prácticas de MLOps y a los límites de tamaño de archivo 
+de GitHub (que bloquea archivos mayores a 100MB), los pesos del modelo de 
+Inteligencia Artificial no se encuentran versionados en el repositorio principal.
+
+Para poder ejecutar la API y probar la funcionalidad del Tutor Inteligente, 
+es estrictamente necesario integrar este modelo en el proyecto antes de 
+levantar los contenedores de Docker.
+
+Por favor, siga estos pasos:
+
+1. Descargue el archivo comprimido "modelo_exportado.zip" adjunto en esta 
+   entrega de Blackboard.
+2. Extraiga el contenido del archivo .zip.
+3. Mueva la carpeta extraída hacia la siguiente ruta exacta dentro del 
+   repositorio que acaba de clonar:
+   
+   Ceneval-Tutor/data_science/modelo_exportado/
+
+Para que el contenedor de FastAPI pueda montar el volumen correctamente, 
+la estructura interna de carpetas debe quedar exactamente así:
+
+   Ceneval-Tutor/
+   └── data_science/
+       └── modelo_exportado/
+           ├── pesos_bert_cnn.pt
+           ├── metadatos.json
+           └── tokenizador/
+
+Una vez que la carpeta "modelo_exportado" y sus archivos estén en esa 
+ubicación, puede proceder con normalidad a levantar el proyecto ejecutando 
+el comando en la raíz del repositorio: 
+
+docker compose up --build
+
 ## Estructura del Proyecto
 
 ```text
@@ -136,3 +172,4 @@ npm run dev
 
 El frontend estará disponible en:
 * **Aplicación:** `http://localhost:5173`
+
