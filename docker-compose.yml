@@ -29,11 +29,24 @@ services:
       - .env
     depends_on:
       - db
+      - ollama #  Esperar a que Ollama esté listo antes de arrancar la API
     networks:
       - ceneval_net
 
+  
+  ollama:
+    image: ollama/ollama:latest 
+    container_name: ollama
+    ports:
+      - "11434:11434" 
+    volumes:
+      - ollama_data:/root/.ollama 
+    networks:
+      - ceneval_net 
+
 volumes:
   postgres_data:
+  ollama_data: 
 
 networks:
   ceneval_net:
