@@ -1,14 +1,20 @@
-
 import { useState, useRef, useCallback } from "react";
-import { clasificarTexto } from "../../services/nlpService";
+import { nlpService } from "../../services/nlpService"; // ─── 1. CAMBIO: Importar el servicio real unificado
 import "./ClasificadorPage.css";
 
 // ─── Constantes ───────────────────────────────────────────────────────────────
 const HISTORIAL_KEY = "ceneval_clasificador_historial";
-// TODO: Cuando el backend tenga el endpoint, reemplazar las funciones
-// cargarHistorial/guardarHistorial por llamadas a GET/POST /historial/
 
-const COLORES_CLASES = ["#00c896", "#6c8ef5", "#f5a623", "#e05cff"];
+// Mapeo semántico oficial para traducir las etiquetas crudas del modelo BERT-CNN
+const AREA_LABELS = {
+  calif_software: 'Ingeniería de Software',
+  calif_redes: 'Redes',
+  calif_bd: 'Bases de Datos',
+  calif_matematicas: 'Matemáticas',
+  calif_logica: 'Lógica y Algoritmos',
+};
+
+const COLORES_CLASES = ["#00c896", "#6c8ef5", "#f5a623", "#e05cff", "#ff4a4a"];
 
 // ─── Helpers de localStorage ──────────────────────────────────────────────────
 function cargarHistorial() {
@@ -64,21 +70,22 @@ const IconX = () => (
   </svg>
 );
 
-// ─── Subcomponente: 4 barras de probabilidad ──────────────────────────────────
+// ─── Subcomponente: Barras de probabilidad ──────────────────────────────────
 function BarrasProbs({ todasLasProbs, etiquetaPredicha }) {
+  if (!todasLasProbs) return null;
   const entries = Object.entries(todasLasProbs).sort((a, b) => b[1] - a[1]);
   return (
     <div className="barras-container">
       {entries.map(([clase, prob], i) => (
         <div key={clase} className={`barra-row ${clase === etiquetaPredicha ? "principal" : ""}`}>
           <div className="barra-meta">
-            <span className="barra-label">{clase}</span>
-            <span className="barra-pct" style={{ color: COLORES_CLASES[i] }}>
-              {prob.toFixed(1)}%
+            <span className="barra-label">{AREA_LABELS[clase] || clase}</span>
+            <span className="barra-pct" style={{ color: COLORES_CLASES[i % COLORES_CLASES.length] }}>
+              {(prob * 100).toFixed(1)}%
             </span>
           </div>
           <div className="barra-track">
-            <div className="barra-fill" style={{ width: `${prob}%`, backgroundColor: COLORES_CLASES[i] }} />
+            <div className="barra-fill" style={{ width: `${prob * 100}%`, backgroundColor: COLORES_CLASES[i % COLORES_CLASES.length] }} />
           </div>
         </div>
       ))}
@@ -92,15 +99,22 @@ function HistorialItem({ item, onEliminar }) {
   const fecha = new Date(item.timestamp).toLocaleString("es-MX", {
     day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit",
   });
+  
+  const nombreLegible = AREA_LABELS[item.resultado.area_detectada] || 'Fuera de Dominio';
+
   return (
     <div className={`historial-item ${abierto ? "abierto" : ""}`}>
       <div className="historial-header" onClick={() => setAbierto(!abierto)}>
         <div className="historial-header-left">
-          <span className="historial-etiqueta">{item.resultado.etiqueta_predicha}</span>
+          <span className="historial-etiqueta" style={{ backgroundColor: item.resultado.fuera_de_dominio ? 'var(--color-danger-transparent)' : '' }}>
+            {item.resultado.fuera_de_dominio ? '❌ Fuera de Dominio' : nombreLegible}
+          </span>
           <span className="historial-fecha">{fecha}</span>
         </div>
         <div className="historial-header-right">
-          <span className="historial-conf">{item.resultado.confianza_pct.toFixed(1)}%</span>
+          <span className="historial-conf">
+            {item.resultado.fuera_de_dominio ? '-' : `${(item.resultado.confianza * 100).toFixed(1)}%`}
+          </span>
           <button className="btn-icon-sm" onClick={e => { e.stopPropagation(); onEliminar(item.id); }} title="Eliminar">
             <IconTrash />
           </button>
@@ -110,10 +124,10 @@ function HistorialItem({ item, onEliminar }) {
       {abierto && (
         <div className="historial-detalle">
           <p className="historial-texto">"{item.texto}"</p>
-          {item.resultado.todas_las_probs && (
+          {!item.resultado.fuera_de_dominio && item.resultado.todas_las_probs && (
             <BarrasProbs
               todasLasProbs={item.resultado.todas_las_probs}
-              etiquetaPredicha={item.resultado.etiqueta_predicha}
+              etiquetaPredicha={item.resultado.area_detectada}
             />
           )}
         </div>
@@ -133,31 +147,36 @@ export default function ClasificadorPage() {
   const [pdfNombre, setPdfNombre]         = useState(null);
   const fileInputRef = useRef(null);
 
-  // ── Lógica central de análisis ─────────────────────────────────────────────
+  // ── Lógica central de análisis integrada con backend real ──────────────────
   const analizar = useCallback(async (texto) => {
     setEstaCargando(true);
     setResultadoIA(null);
     setErrorPeticion(null);
 
-    const resultado = await clasificarTexto(texto);
+    try {
+      // ─── 2. CAMBIO: Consumir el endpoint real de la Red Neuronal (FastAPI)
+      const resultado = await nlpService.clasificarTexto(texto);
 
-    if (!resultado.success) {
-      setErrorPeticion(resultado.error);
-    } else {
-      setResultadoIA(resultado.data);
+      setResultadoIA(resultado);
+      
       const nuevoItem = {
         id: Date.now(),
         timestamp: new Date().toISOString(),
         texto: texto.length > 130 ? texto.slice(0, 130) + "…" : texto,
-        resultado: resultado.data,
+        resultado: resultado, // Almacena la estructura oficial
       };
+
       setHistorial(prev => {
         const actualizado = [nuevoItem, ...prev].slice(0, 50);
         guardarHistorial(actualizado);
         return actualizado;
       });
+
+    } catch (error) {
+      setErrorPeticion(error.message || "Error al procesar la clasificación en el servidor.");
+    } finally {
+      setEstaCargando(false);
     }
-    setEstaCargando(false);
   }, []);
 
   const handleSubmit = (e) => {
@@ -191,7 +210,6 @@ export default function ClasificadorPage() {
         textoCompleto += content.items.map(item => item.str).join(" ") + "\n";
       }
 
-      // Tomar el primer párrafo con contenido suficiente
       const primerParrafo = textoCompleto
         .split(/\n+/)
         .map(p => p.trim())
@@ -279,7 +297,7 @@ export default function ClasificadorPage() {
         </button>
       </form>
 
-      {/* Resultado */}
+      {/* Resultado Erróneo */}
       {errorPeticion && (
         <div className="resultado-card error">
           <div className="card-header"><IconX /><span>Error al procesar</span></div>
@@ -287,27 +305,32 @@ export default function ClasificadorPage() {
         </div>
       )}
 
+      {/* Resultado Exitoso (Dentro de Dominio) */}
       {resultadoIA && !resultadoIA.fuera_de_dominio && (
         <div className="resultado-card exito">
           <div className="card-header"><IconCheck /><span>Clasificación exitosa</span></div>
           <div className="etiqueta-ganadora">
             <span className="etiqueta-label">ÁREA TEMÁTICA</span>
-            <strong className="etiqueta-valor">{resultadoIA.etiqueta_predicha}</strong>
+            {/* ─── 3. CAMBIO: Mostrar nombre legible en vez de la llave cruda de la BD */}
+            <strong className="etiqueta-valor">
+              {AREA_LABELS[resultadoIA.area_detectada] || resultadoIA.area_detectada}
+            </strong>
           </div>
           {resultadoIA.todas_las_probs && (
             <BarrasProbs
               todasLasProbs={resultadoIA.todas_las_probs}
-              etiquetaPredicha={resultadoIA.etiqueta_predicha}
+              etiquetaPredicha={resultadoIA.area_detectada}
             />
           )}
         </div>
       )}
 
+      {/* Resultado Fuera de Dominio */}
       {resultadoIA?.fuera_de_dominio && (
         <div className="resultado-card fuera-dominio">
           <div className="card-header"><IconAlert /><span>Texto fuera de dominio</span></div>
           <p className="card-desc">
-            La pregunta no parece relacionada con temáticas CENEVAL.
+            La pregunta no parece relacionada con temáticas CENEVAL oficiales de la computación.
             Intenta con una pregunta más específica del examen.
           </p>
         </div>
@@ -330,10 +353,6 @@ export default function ClasificadorPage() {
               <HistorialItem key={item.id} item={item} onEliminar={eliminarItem} />
             ))}
           </div>
-          {/* TODO: migrar a BD cuando esté el endpoint:
-              GET    /historial/        → cargar al montar (useEffect)
-              POST   /historial/        → guardar tras cada análisis
-              DELETE /historial/{id}    → eliminar item individual       */}
         </section>
       )}
 

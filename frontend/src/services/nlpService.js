@@ -1,48 +1,40 @@
+// frontend/src/services/nlpService.js
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
 
-/**
- * Envía un texto al modelo de clasificación NLP en el backend.
- * @param {string} textoUsuario - El texto ingresado por el usuario.
- * @returns {Promise<{success: boolean, data?: object, error?: string}>}
- * Siempre retorna un objeto controlado; nunca lanza excepciones hacia la UI.
- */
-export async function clasificarTexto(textoUsuario) {
-  // --- Validación de entrada (Guard Clause) ---
-  if (!textoUsuario || textoUsuario.trim() === "") {
-    return {
-      success: false,
-      error: "El texto no puede estar vacío.",
-    };
-  }
+export const nlpService = {
+  /**
+   * Clasifica una pregunta ingresada usando el motor semántico BERT-CNN del backend
+   * @param {string} text Pregunta o texto a evaluar
+   * @returns {Promise<Object>} Resultado con el área, confianza y bandera de fuera de dominio
+   */
+  clasificarTexto: async (text) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/nlp/clasificar`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Descomentar si requiere token de autenticación:
+          // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ texto: text }),
+      });
 
-  try {
-    const response = await fetch(`${API_BASE_URL}/clasificar/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ texto: textoUsuario.trim() }),
-    });
+      if (!response.ok) {
+        throw new Error('Error al procesar la clasificación en el servidor.');
+      }
 
-    // Manejar respuestas HTTP no-2xx (ej. 422 Unprocessable Entity, 500)
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const detail = errorBody?.detail || `Error del servidor (HTTP ${response.status})`;
-      return { success: false, error: detail };
+      return await response.json();
+      /* El backend debe retornar un JSON con esta estructura esperada:
+        {
+          "area_detectada": "calif_software",
+          "confianza": 0.945,
+          "fuera_de_dominio": false
+        }
+      */
+    } catch (error) {
+      console.error('Error en nlpService.clasificarTexto:', error);
+      throw error;
     }
-
-    const data = await response.json();
-    return { success: true, data };
-
-  } catch (networkError) {
-    // Error de red: el backend no está corriendo o hay un problema de CORS
-    console.error("[nlpService] Error de red:", networkError);
-    return {
-      success: false,
-      error:
-        "No se pudo conectar con el servidor. Verifica que el backend esté activo en " +
-        API_BASE_URL,
-    };
   }
-}
+};
