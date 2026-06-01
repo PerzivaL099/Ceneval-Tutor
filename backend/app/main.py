@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
@@ -21,6 +22,9 @@ from app.schemas import exam as exam_schema
 from app.schemas import question as question_schema
 from app.services import exam_service
 from typing import List
+
+from app.schemas import tutor as tutor_schema
+from app.services import tutor_services
 
 # -----------------------------------------------------------------------------
 # NUEVO: Clasificador NLP (BERT_CNN)
@@ -175,3 +179,62 @@ def clasificar_pregunta(data: nlp_schema.ClasificadorRequest):
         return nlp_service.clasificar_texto(data)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en clasificación: {str(e)}")
+    
+    # ---------------------------------------------------------
+# RUTAS DEL TUTOR CONVERSACIONAL — OLLAMA (FASE 6)
+# ---------------------------------------------------------
+
+@app.post("/tutor/chat")
+async def chat_tutor(
+    data: tutor_schema.ChatRequest,
+    current_user: user_model.User = Depends(get_current_user)
+):
+    """
+    Endpoint de chat con el Tutor IA (Ollama llama3.1:8b).
+
+    Flujo:
+    1. BERT-CNN clasifica automáticamente el área temática de la pregunta.
+    2. Si area_override está presente, se usa ese valor en lugar de BERT-CNN.
+    3. Se construye el system_prompt con el contexto del área detectada.
+    4. Se llama a Ollama con streaming y se retorna token a token.
+
+    Áreas posibles para area_override:
+    - 0: Algoritmia y Estructuras de Datos
+    - 1: Arquitectura de Computadoras y Sistemas
+    - 2: Ingeniería de Software, Bases de Datos y Ciberseguridad
+    - 3: Computación Inteligente y Sistemas Distribuidos
+
+    Ejemplo de request:
+        {
+            "pregunta": "¿Cómo funciona un árbol AVL?",
+            "area_override": null,
+            "historial": []
+        }
+    """
+    try:
+        return StreamingResponse(
+            tutor_service.chat_con_tutor(
+                pregunta=data.pregunta,
+                area_override=data.area_override,
+                historial=[m.dict() for m in data.historial]
+            ),
+            media_type="text/event-stream"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error en tutor: {str(e)}")
+
+
+@app.get("/tutor/areas")
+def listar_areas_tutor():
+    """
+    Devuelve las 4 áreas temáticas del EGEL-C.
+    Usado por el frontend para poblar el selector de corrección de área.
+    """
+    return {
+        "areas": [
+            {"id": 0, "nombre": "Algoritmia y Estructuras de Datos"},
+            {"id": 1, "nombre": "Arquitectura de Computadoras y Sistemas"},
+            {"id": 2, "nombre": "Ingeniería de Software, Bases de Datos y Ciberseguridad"},
+            {"id": 3, "nombre": "Computación Inteligente y Sistemas Distribuidos"},
+        ]
+    }

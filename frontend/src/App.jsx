@@ -6,7 +6,7 @@ import DashboardPage from './pages/DashboardPage/DashboardPage';
 import ExamPage from './pages/ExamPage/ExamPage';
 import ResultsPage from './pages/ResultsPage/ResultsPage';
 import ClasificadorPage from './pages/ClasificadorPage/ClasificadorPage';
-
+import TutorChatPage from './pages/TutorChatPage/TutorChatPage';
 // Protected Route wrapper
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -76,6 +76,7 @@ function AppRoutes() {
         <Route path="/exam" element={<ExamPage />} />
         <Route path="/results" element={<ResultsPage />} />
         <Route path="/clasificador" element={<ClasificadorPage />} />
+        <Route path="/tutor" element={<TutorChatPage />} />
       </Route>
 
       {/* Default redirect */}

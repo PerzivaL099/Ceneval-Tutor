@@ -7,6 +7,7 @@ const navItems = [
     { path: '/exam', label: 'Simulacro Exam', icon: '⚡' },
     { path: '/results', label: 'Mis Resultados', icon: '📈' },
     { path: '/clasificador', label: 'Clasificador IA', icon: '🧠' },
+    { path: '/tutor', label: 'Tutor IA', icon: '💬' },
 ];
 
 export default function Sidebar() {
