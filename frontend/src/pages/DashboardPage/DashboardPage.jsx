@@ -1,6 +1,7 @@
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { diagnosticoService } from '../../services/diagnosticoService'; // <-- 1. IMPORTAR TU SERVICIO REAL
 import './DashboardPage.css';
 
 // Category mapping for display
@@ -82,7 +83,6 @@ function ProbabilityGauge({ probability }) {
 function ActivityHeatmap() {
     const days = 35;
     const cells = Array.from({ length: days }, (_, i) => {
-        // Simulate activity levels
         const level = Math.random();
         if (i > 28) return 0;
         if (level > 0.7) return 3;
@@ -118,14 +118,30 @@ export default function DashboardPage() {
     const { user } = useAuth();
     const navigate = useNavigate();
     const [lastResult, setLastResult] = useState(null);
+    
+    // <-- 2. NUEVOS ESTADOS DE CONTROL DE FLUJO ASÍNCRONO
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
+    // <-- 3. REFACTORIZACIÓN DEL EFFECT PARA CONSUMIR EL ENDPOINT
     useEffect(() => {
-        const stored = localStorage.getItem('lastDiagnosticResult');
-        if (stored) {
+        const fetchRealMetrics = async () => {
             try {
-                setLastResult(JSON.parse(stored));
-            } catch { /* ignore */ }
-        }
+                setLoading(true);
+                setError(null);
+                
+                // Llamada al servicio real en lugar de localStorage
+                const response = await diagnosticoService.getUltimoResultado();
+                setLastResult(response); 
+            } catch (err) {
+                console.error(err);
+                setError('No se pudieron recuperar las métricas en tiempo real de la API.');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRealMetrics();
     }, []);
 
     const userName = user?.email?.split('@')[0] || 'Estudiante';
@@ -158,6 +174,28 @@ export default function DashboardPage() {
         'Grafos', 'ACID',
     ];
 
+    // <-- 4. RENDERIZADO CONDICIONAL DE ESTADO DE CARGA (LOADING)
+    if (loading) {
+        return (
+            <div className="dashboard-loading" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh', gap: '1rem', color: 'var(--text-secondary)' }}>
+                <div className="spinner" style={{ width: '40px', height: '40px', border: '4px solid var(--border-color)', borderTopColor: 'var(--accent-primary)', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+                <p>Cargando tus métricas predictivas desde el backend...</p>
+                <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+            </div>
+        );
+    }
+
+    // <-- 5. RENDERIZADO CONDICIONAL DE ERROR DE RED/SERVIDOR
+    if (error) {
+        return (
+            <div className="dashboard-error" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', color: 'var(--color-danger)' }}>
+                <p>{error}</p>
+            </div>
+        );
+    }
+
+    // El resto de tu UI se mantiene exactamente igual, pero ahora "hasResults" 
+    // dependerá de si el backend regresó datos reales o null.
     return (
         <div className="dashboard">
             {/* Top Section — Hero row */}
