@@ -1,0 +1,8 @@
+# 1. Comprobar que el contenedor 'ollama' ya esté arriba y saludable
+docker ps
+
+# 2. Ejecutar el pull del modelo Llama 3.1 (8 Billion parameters) dentro del contenedor
+docker exec -it ollama ollama pull llama3.1:8b
+
+# 3. Validar que el modelo se guardó correctamente en el volumen persistente
+docker exec -it ollama ollama list

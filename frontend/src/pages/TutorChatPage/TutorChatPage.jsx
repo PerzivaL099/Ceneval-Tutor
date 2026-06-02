@@ -145,6 +145,7 @@ export default function TutorChatPage() {
             .map(m => ({ role: m.role, content: m.content }));
 
         try {
+            // Conectando al endpoint directo sin /api, tal como está en main.py
             const res = await fetch('http://localhost:8000/tutor/chat', {
                 method: 'POST',
                 headers: {
@@ -158,7 +159,7 @@ export default function TutorChatPage() {
                 }),
             });
 
-            if (!res.ok) throw new Error(`Error ${res.status}`);
+            if (!res.ok) throw new Error(`Error del servidor backend: ${res.status}`);
 
             // Read stream
             const reader = res.body.getReader();
@@ -185,7 +186,14 @@ export default function TutorChatPage() {
                 const chunk = decoder.decode(value, { stream: true });
                 const lines = chunk.split('\n').filter(l => l.trim());
 
-                for (const line of lines) {
+                for (let line of lines) {
+                    // ✅ REFACTOR: Remover el prefijo 'data: ' del protocolo SSE
+                    if (line.startsWith('data: ')) {
+                        line = line.replace('data: ', '').trim();
+                    } else {
+                        continue; // Ignorar líneas de control o vacías
+                    }
+
                     try {
                         const parsed = JSON.parse(line);
 
@@ -210,8 +218,8 @@ export default function TutorChatPage() {
                                 return updated;
                             });
                         }
-                    } catch {
-                        // Non-JSON line, skip
+                    } catch (e) {
+                        // Error de parseo silencioso por líneas corruptas
                     }
                 }
             }
@@ -228,7 +236,7 @@ export default function TutorChatPage() {
 
         } catch (err) {
             setLoading(false);
-            setError('No se pudo conectar con el Tutor IA. Verifica que Ollama esté corriendo en localhost:11434.');
+            setError('No se pudo establecer comunicación con el servidor de FastAPI en el puerto 8000.');
             setMessages(prev => prev.filter(m => !m.streaming));
         }
 

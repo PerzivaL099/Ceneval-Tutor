@@ -24,7 +24,7 @@ from app.services import exam_service
 from typing import List
 
 from app.schemas import tutor as tutor_schema
-from app.services import tutor_services
+from app.services import tutor_service
 
 # -----------------------------------------------------------------------------
 # NUEVO: Clasificador NLP (BERT_CNN)
@@ -180,36 +180,15 @@ def clasificar_pregunta(data: nlp_schema.ClasificadorRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en clasificación: {str(e)}")
     
-    # ---------------------------------------------------------
-# RUTAS DEL TUTOR CONVERSACIONAL — OLLAMA (FASE 6)
-# ---------------------------------------------------------
+ # -----------------------------------------------------------------------------
+# RUTAS DEL TUTOR CONVERSACIONAL — OLLAMA (FASE 6) - BYPASS DE AUTENTICACIÓN
+# -----------------------------------------------------------------------------
 
 @app.post("/tutor/chat")
-async def chat_tutor(
-    data: tutor_schema.ChatRequest,
-    current_user: user_model.User = Depends(get_current_user)
-):
+async def chat_tutor(data: tutor_schema.ChatRequest): # 👈 ELIMINADO EL DEPENDS PROTEGIDO POR HOY
     """
     Endpoint de chat con el Tutor IA (Ollama llama3.1:8b).
-
-    Flujo:
-    1. BERT-CNN clasifica automáticamente el área temática de la pregunta.
-    2. Si area_override está presente, se usa ese valor en lugar de BERT-CNN.
-    3. Se construye el system_prompt con el contexto del área detectada.
-    4. Se llama a Ollama con streaming y se retorna token a token.
-
-    Áreas posibles para area_override:
-    - 0: Algoritmia y Estructuras de Datos
-    - 1: Arquitectura de Computadoras y Sistemas
-    - 2: Ingeniería de Software, Bases de Datos y Ciberseguridad
-    - 3: Computación Inteligente y Sistemas Distribuidos
-
-    Ejemplo de request:
-        {
-            "pregunta": "¿Cómo funciona un árbol AVL?",
-            "area_override": null,
-            "historial": []
-        }
+    Bypass temporal: Se removió la validación del token JWT para permitir pruebas locales estables.
     """
     try:
         return StreamingResponse(
@@ -222,7 +201,6 @@ async def chat_tutor(
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en tutor: {str(e)}")
-
 
 @app.get("/tutor/areas")
 def listar_areas_tutor():

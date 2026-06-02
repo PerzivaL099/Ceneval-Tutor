@@ -34,13 +34,13 @@ MAPEO_ARCHIVOS = {
 
 def unificar_dataset():
     dataframes = []
-    print("⚙️ Iniciando extracción y mapeo de datos...")
+    print(" Iniciando extracción y mapeo de datos...")
 
     for archivo, etiqueta in MAPEO_ARCHIVOS.items():
         ruta_completa = os.path.join(RAW_DIR, archivo)
         
         if not os.path.exists(ruta_completa):
-            print(f"⚠️ Advertencia: No se encontró {archivo}. Revisa el nombre exacto.")
+            print(f" Advertencia: No se encontró {archivo}. Revisa el nombre exacto.")
             continue
             
         try:
@@ -72,15 +72,15 @@ def unificar_dataset():
                 df_temp["area_origen"] = archivo.replace(".txt", "")
                 
                 dataframes.append(df_temp)
-                print(f"✅ {archivo} cargado: {len(df_temp)} preguntas -> Etiqueta {etiqueta}")
+                print(f" {archivo} cargado: {len(df_temp)} preguntas -> Etiqueta {etiqueta}")
             else:
-                print(f"⚠️ {archivo} se leyó pero no contenía el formato esperado.")
+                print(f" {archivo} se leyó pero no contenía el formato esperado.")
                 
         except Exception as e:
-            print(f"❌ Error crítico al procesar {archivo}: {e}")
+            print(f" Error crítico al procesar {archivo}: {e}")
 
     if not dataframes:
-        print("❌ No se pudo cargar ningún archivo. Revisa las rutas.")
+        print(" No se pudo cargar ningún archivo. Revisa las rutas.")
         return
 
     df_final = pd.concat(dataframes, ignore_index=True)
@@ -90,8 +90,8 @@ def unificar_dataset():
     df_final.to_csv(ruta_salida, index=False, encoding='utf-8')
     
     print("-" * 40)
-    print(f"🚀 Extracción completada. Dataset guardado en: {ruta_salida}")
-    print(f"📊 Total de preguntas base: {len(df_final)}")
+    print(f" Extracción completada. Dataset guardado en: {ruta_salida}")
+    print(f" Total de preguntas base: {len(df_final)}")
     
     print("\nBalance de clases (0=Algoritmia, 1=SoftBase, 2=SoftApp, 3=IA):")
     print(df_final['etiqueta'].value_counts())
